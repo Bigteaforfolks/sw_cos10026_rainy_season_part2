@@ -5,4 +5,8 @@
             <h1 id="title">Rainy Season</h1>
         </a>
     </div>
+
+    <?php 
+    include("nav.inc"); 
+    ?>
 </header>

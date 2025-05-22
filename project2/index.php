@@ -12,8 +12,9 @@
 </head>
 
 <body id="home-page">
-
-
+    <?php
+        include 'header.inc';
+    ?>
 
     <section id="landing">
         <img id="landing_logo" src="images/logo.png" alt="Rainy Season Logo">
@@ -76,8 +77,9 @@
 
         <p>At Rainy Season, we believe in nurturing talent and innovation. Explore our latest job openings and find the perfect opportunity to grow with us. Each position comes with a detailed description outlining the qualifications, skills, and knowledge required. Ready to join our dynamic team&#63; Submit your application online today and take the next step in your career journey&excl;</p>
     </section>
-    
 
-    
+    <?php
+        include 'footer.inc';
+    ?>
 </body>
 </html>

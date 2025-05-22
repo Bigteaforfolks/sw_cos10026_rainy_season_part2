@@ -1,4 +1,5 @@
-<nav>
+<footer>
+    <nav>
         <ul>
             <li class="footmenu"><a href="index.html" title="This takes you to the Home page.">Home</a></li>
             <li class="footmenu"><a href="jobs.html" title="This takes you to the Position Descriptions page.">Jobs</a></li>
@@ -9,3 +10,4 @@
 
         <p>&#169; Swinburne University of Technology  &sol;  <a href="https://rainy-season.atlassian.net/">Rainy Season Jira</a>  &sol;  <a href="https://github.com/Bigteaforfolks/sw_cos10026_rainy_season" target="_blank">Github Repository</a></p>
     </nav>
+</footer>
