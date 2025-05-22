@@ -1,0 +1,473 @@
+/*
+filename: rainyseason.css
+author: Oakley Tang, Jacob Ang
+created: 2025/04/08
+last modified: 2025/04/11 (Oakley)
+description: universal stylesheet
+*/
+
+
+/* universal style elements */
+* {font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+
+header {
+    display: flex;  /* flexbox for header */
+    align-items: center;
+    background-color: midnightblue;
+    color: white;
+    justify-content: space-between;    /* pushes the branding and menu to opposite sides of the header */
+    padding-right: 30px;
+    height: 125px;
+}
+
+body {
+    margin: 0;  /* setting all margins to zero allows header and footer flexboxes to reach edges of the page */
+    background:url(images/background_img.png);   /* image by pngtree.com, https://pngtree.com/freebackground/umbrella-monsoon-season-rain-cloud-background_1291113.html */
+    background-size: cover;
+    min-width: 1575px;
+}
+
+.branding a {
+    display: flex;  /* flexbox for logo image and company name */
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+#logo {
+    height: 85px;
+    width: auto;    /* retains image aspect ratio */
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5%;  /* creates rounded effect on image */
+}
+
+.menu, .footmenu {
+    display: inline-block;  /* arranges menu list into single row and removes dot points */
+}
+
+nav ul a {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+}
+
+.menu {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.footmenu {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+nav ul a:hover {
+    text-decoration: underline; 
+}
+
+nav p a {
+    color: white;
+}
+
+nav p a:hover {
+    text-decoration: none;
+}
+
+.description {
+    background-color: rgb(200, 230, 240, 0.5);
+    padding: 10px;
+}
+
+.description--hiring {
+    background-color: transparent;
+}
+
+.description, #landing {
+    text-align: center;
+}
+
+.description h2, #landing h2 {
+    font-size: 2em;
+}
+
+.description p, #landing p {
+    font-size: 1.5em;
+}
+
+footer {
+    display: flex;  /* flexbox for footer */
+    align-items: center;
+    background-color: midnightblue;
+    color: white;
+    justify-content: center;
+    height: 100px;
+    margin-top: 50px;
+}
+
+footer ul {
+    margin-left: -2%;   /* margin to center footer content */
+}
+
+footer p {
+    text-align: center;
+    margin-left: 1%;  /* margin to center footer content */
+}
+
+/* Home page style elements */
+#landing img {
+    display: block;
+    margin: 50px auto;
+    border-radius: 5%;  /* creates rounded effect on image */
+}
+
+#pages {
+    display: flex;  /* flexbox for page tiles */
+    align-items: center;
+    justify-content: space-between;
+}
+
+#pages .jobs-item, #pages .apply-item, #pages .about-item {
+    display: flex;  /* flexbox for text, allowing it to be vertically centered */
+    flex-direction: column;
+    justify-content: center;
+    width: 33.33%;  /* three flexbox tiles, so one-third of the page covered by each */
+    height: 300px;
+    text-align: center;
+    align-items: center;
+    overflow: hidden;   /* hides parts of tile background images that go over edge of flexbox */
+    position: relative;
+}
+
+#pages .jobs-item:hover, #pages .apply-item:hover, #pages .about-item:hover {
+    background-color: rgb(0, 0, 0, 0.4);
+    border-radius: 30px;
+}
+
+#jobs-img, #apply-img, #about-img {
+    position: absolute; /* fixes tile background image position to flexbox */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter:brightness(0.33);    /* lower tile background image brightness to make text legible */
+    z-index: -1;
+    border-radius: 30px;  /* creates rounded effect on image */
+}
+
+.pages-text {
+    font-size: 1.5em;
+    margin: 20px;
+    color: #ffffff;
+}
+
+#pages .jobs-item a, #pages .apply-item a, #pages .about-item a {
+    text-decoration: none;
+}
+
+.jobs-item {
+    margin-left: 5px;
+}
+
+.apply-item {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.about-item {
+    margin-right: 5px;
+}
+
+
+/* Jobs page style elements */
+h1 {
+    font: bold 3em 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.positions h2 {
+    font-size: 2em;
+}
+
+.positions h3, aside h3 {
+    font-size: 1.5em;
+}
+
+.superior {
+    font-weight: bold;  /* bolds position to which job reports to */
+}
+
+aside {
+    float: right;
+    width: 25%;
+    margin: 25px 25px;
+    padding: 10px 0;    /* pads top and bottom to make aside content look nicer */
+    border: 4px solid midnightblue;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+    background-color: white;
+}
+
+aside p, aside h3 {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+aside .job a {
+    color: midnightblue;
+}
+
+aside .job a:hover {
+    text-decoration: none;
+}
+
+aside #apply-link a {
+    text-decoration: underline;
+    color: midnightblue;
+}
+
+aside #apply-link a:hover {
+    text-decoration: none;
+}
+
+.positions p, .positions ol, .positions ul, aside p, aside ol, aside ul {
+    font-size: 1.25em;
+}
+
+#about {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 131px;
+    margin-bottom: 145px;
+    margin-left: 5%;
+    margin-right: 35%;
+}
+
+.positions ol, .positions ul, .positions h2, .positions h3, .positions p {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.back-to-top a {
+    color: midnightblue;
+}
+
+.back-to-top a:hover {
+    text-decoration: none;
+}
+
+.separator {
+    margin: 50px 10px;
+}
+
+/* Apply page style elements */
+
+.form-field *:required {
+    background-color: rgb(255, 240, 240);
+}
+
+.form-field__textbox:focus, .form-field__textarea:focus, .form-field__radio:focus, .form-field__select:focus, .form-field__checkbox:focus{
+    box-shadow: 0px 0px 15px 2px lightblue;
+}
+
+.form-field__textbox, .form-field__textarea {
+    border: solid 1px black;
+}
+
+.form-section:hover {
+    background-color: #FFFFFF;
+}
+
+.form-introduction h2 {
+    font-size: 2em;
+    text-align: center;
+}
+
+.form-introduction p {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#form-container {
+    padding: 0px 2%;
+    margin: 0px 30%;
+}
+
+.form-section {
+    border: solid 1px;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0px;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.4);
+}
+
+.form-section-introduction h3 {
+    font-size: 1.5em;
+    margin: 10px 0px;
+}   
+
+.form-section-introduction p {
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    margin: 25px 30px;
+}
+
+.form-field {
+    align-items: center;
+    padding: 5px 0px;
+}
+
+.form-field__label {
+    display: inline-block;  /* display all labels to the side of inputs */
+    width: 20%
+}
+
+.form-field__textbox {
+    width: 200px;
+}
+
+.form-group--name .form-field__textbox {
+    width: 100px;
+}
+
+.form-group--contact #phonenumber {
+    width: 150px;
+}
+
+.form-group--other #dateofbirth {
+    width: 85px;
+    margin-bottom: 30px;
+}
+
+.form-section--address #streetaddress {
+    width: 300px;
+}
+
+.form-section--address #postcode {
+    width: 70px
+}
+
+.form-group--technicalskills {
+    margin-bottom: 0px;
+}
+
+.form-group--technicalskills p {
+    margin-bottom: 5px;
+}
+
+.form-group--technicalskills .form-field__label {
+    width: 500px;
+}
+
+.form-group--otherskills {
+    margin-top: 0px;
+}
+
+.form-group--otherskills .form-field__label, .form-group--otherskills .form-field__textarea {
+    display: inline-block;  /* display label and input side by side */
+    vertical-align: top;
+}
+
+.form-group--otherskills .form-field__label {
+    width: 100px;
+}
+
+.form-group--otherskills .form-field__textarea {
+    width: 500px;
+}
+
+.form-input {
+    display: flex;
+    justify-content: right;
+}
+
+#submit-button {
+    border: solid 2px #FFFFFF;
+    border-radius: 10px;
+    width: 300px;
+    height: 60px;
+    font-size: 2em;
+    background-color: rgb(207, 242, 255);
+    box-shadow: inset 0 5px 5px 0 white, 5px 5px 5px 0px rgb(100, 120, 128);
+}
+
+#submit-button:hover {
+    background-color: rgb(219, 246, 255);
+    box-shadow: inset 0 5px 5px 0 white, 3px 3px 2px 0px rgb(58, 70, 75);
+}
+
+#submit-button:active {
+    box-shadow: 0;
+}
+
+/* About page CSS styling */
+#student-ids {
+    margin-top: 0;      /* brings student ids vertically level with other information list */
+    float: right;
+}
+
+.team-photo-section img {
+    border: 3px solid midnightblue;
+    float: right;
+    margin-top: 25px;
+}
+
+#team-basic-info h3, #team-basic-info ul, .team-photo-section img, #member-contribution {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.team-photo-section img {
+    scale: 125%;
+}
+
+#team-basic-info h3, #member-contribution h3, .interests table caption {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#team-basic-info ul, #member-contribution ul, #member-contribution dt {
+    font-size: 1.25em;
+}
+
+#team-basic-info ul ul, #member-contribution ul ul {
+    font-size: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.interests table caption {
+    margin-bottom: 25px;
+}
+
+.interests table {
+    margin: 0 auto;
+    text-align: center;
+    width: 500px;
+}
+
+.interests table tbody tr, .interests table th {
+    background-color: #FFFFFF;
+    border: 2px solid black;
+}
+
+.interests table tbody tr td {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+}
+
+.interests table tbody tr td:hover{
+    background-color: midnightblue;
+    border: 1px solid white;
+    color: white
+}
+
+.interests table thead, .interests table tbody {
+    font-size: 1.25em;
+}
