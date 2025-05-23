@@ -77,7 +77,8 @@
                         <li>CSS style file</li>
                         <li>Accessibility checking</li>
                         <li>Jira project management</li>
-                        <li>Site modularisation using php and .inc files</li>
+                        <li>Site modularisation using PHP and .inc files</li>
+                        <li>Conversion of jobs page to  dynamic updating via PHP</li>
                     </ul>
                 </dd>   
             </div>     

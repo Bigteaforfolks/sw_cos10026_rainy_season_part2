@@ -261,6 +261,12 @@ aside #apply-link a:hover {
     margin: 50px 10px;
 }
 
+.no-positions {
+    font-size: 2em;
+    padding: 15%;
+    text-align: center;
+}
+
 /* Apply page style elements */
 
 .form-field *:required {
