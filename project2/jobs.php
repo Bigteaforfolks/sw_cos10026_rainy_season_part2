@@ -42,7 +42,7 @@
                 <li>Commute allowance</li>
             </ul>
 
-            <h3 id="apply-link"><a href="apply.html" title="Application page">Click here to apply!</a></h3>
+            <h3 id="apply-link"><a href="apply.php" title="Application page">Click here to apply!</a></h3>
             
         </aside>
     </div>
