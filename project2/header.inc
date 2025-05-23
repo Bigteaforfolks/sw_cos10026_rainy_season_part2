@@ -6,7 +6,9 @@
         </a>
     </div>
 
-    <?php 
-    include("nav.inc"); 
-    ?>
+    <nav>
+        <?php 
+            include("nav.inc"); 
+        ?>
+    </nav>
 </header>
