@@ -31,7 +31,7 @@
     <!-- A visualisation including descriptions of the different pages of the site -->
     <section id="pages">
         <div class="jobs-item">
-            <a href="jobs.html">
+            <a href="jobs.php">
                 <img id="jobs-img" src="images/jobs.jpg" alt="Jpbs tile background">
                 <div class="pages-text">
                     <h2>Jobs</h2>
@@ -40,7 +40,7 @@
             </a>
         </div>
         <div class="apply-item">
-            <a href="apply.html">
+            <a href="apply.php">
                 <img id="apply-img" src="images/apply.jpg" alt="Apply tile background">
                 <div class="pages-text">
                     <h2>Apply</h2>
@@ -49,7 +49,7 @@
             </a>
         </div>
         <div class="about-item">
-            <a href="about.html">
+            <a href="about.php">
                 <img id="about-img" src="images/team_photo.png" alt="About tile background">
                 <div class="pages-text">
                     <h2>About</h2>

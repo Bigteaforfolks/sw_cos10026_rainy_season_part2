@@ -42,7 +42,7 @@ body {
     border-radius: 5%;  /* creates rounded effect on image */
 }
 
-.menu, .footmenu {
+.menu, .footmenu .menu {
     display: inline-block;  /* arranges menu list into single row and removes dot points */
 }
 
@@ -57,7 +57,7 @@ nav ul a {
     margin-right: 15px;
 }
 
-.footmenu {
+.footmenu .menu {
     margin-left: 50px;
     margin-right: 50px;
 }
