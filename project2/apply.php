@@ -25,7 +25,7 @@
     </section>
     
     <!-- Information will be sent through POST method and echoed back with the values inputted -->
-    <form id="form-container" action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+    <form id="form-container" action="process_eoi.php" method="post">
 
         <div class="form-section form-section--personalinformation">
 
