@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eoi` (
-  `eoi_number` int(11) NOT NULL,
+  `eoi_number` int NOT NULL PRIMARY KEY,
   `job_reference_number` varchar(5) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
-  `dob` date NOT NULL,
+  `dob` varchar(10) NOT NULL,
   `gender` enum('male','female','other') NOT NULL,
   `address_street` varchar(40) NOT NULL,
   `address_suburb` varchar(40) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `eoi` (
   `skill_4` tinyint(1) NOT NULL,
   `skill_5` tinyint(1) NOT NULL,
   `other_skills` text NOT NULL,
-  `status` enum('New','Current','Final') NOT NULL DEFAULT 'New'
+  `eoi_status` enum('New','Current','Final') NOT NULL DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
