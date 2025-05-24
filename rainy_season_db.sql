@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eoi` (
-  `eoi_number` int(11) NOT NULL PRIMARY KEY,
+  `eoi_number` int(11) NOT NULL,
   `job_reference_number` varchar(5) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -37,9 +37,9 @@ CREATE TABLE `eoi` (
   `address_street` varchar(40) NOT NULL,
   `address_suburb` varchar(40) NOT NULL,
   `address_state` enum('VIC','ACT','NT','NSW','QLD','WA','SA','TAS') NOT NULL,
-  `address_postcode` varchar NOT NULL,
+  `address_postcode` varchar(4) NOT NULL,
   `email_address` varchar(50) NOT NULL,
-  `phone_number` varchar NOT NULL,
+  `phone_number` varchar(14) NOT NULL,
   `skill_wireshark` tinyint(1) NOT NULL,
   `skill_csharp` tinyint(1) NOT NULL,
   `skill_jira` tinyint(1) NOT NULL,
