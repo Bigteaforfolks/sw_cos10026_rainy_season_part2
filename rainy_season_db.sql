@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eoi` (
-  `eoi_number` int NOT NULL PRIMARY KEY,
+  `eoi_number` int(11) NOT NULL PRIMARY KEY,
   `job_reference_number` varchar(5) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -40,11 +40,11 @@ CREATE TABLE `eoi` (
   `address_postcode` int(11) NOT NULL,
   `email_address` varchar(50) NOT NULL,
   `phone_number` int(11) NOT NULL,
-  `skill_1` tinyint(1) NOT NULL,
-  `skill_2` tinyint(1) NOT NULL,
-  `skill_3` tinyint(1) NOT NULL,
-  `skill_4` tinyint(1) NOT NULL,
-  `skill_5` tinyint(1) NOT NULL,
+  `skill_wireshark` tinyint(1) NOT NULL,
+  `skill_csharp` tinyint(1) NOT NULL,
+  `skill_jira` tinyint(1) NOT NULL,
+  `skill_github` tinyint(1) NOT NULL,
+  `skill_scriptkiddie` tinyint(1) NOT NULL,
   `other_skills` text NOT NULL,
   `eoi_status` enum('New','Current','Final') NOT NULL DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
