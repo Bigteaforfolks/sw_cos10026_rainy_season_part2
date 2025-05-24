@@ -147,6 +147,34 @@
                 }
             }
 
+            if (empty($eoi_errors)) {
+                // insert values into table as a new record
+                $query = "INSERT INTO eoi (job_reference_number, first_name, last_name, date_of_birth, gender, address_street, address_suburb, address_state, address_postcode, email_address, phone_number, skill_wireshark, skill_csharp, skill_jira, skill_github, skill_scriptkiddie, other_skills) 
+                VALUES ('{$eoi_data["job_reference_number"]}', '{$eoi_data["first_name"]}', '{$eoi_data["last_name"]}', '{$eoi_data["date_of_birth"]}', '{$eoi_data["gender"]}', '{$eoi_data["address_street"]}', '{$eoi_data["address_suburb"]}', '{$eoi_data["address_state"]}', '{$eoi_data["address_postcode"]}', '{$eoi_data["email_address"]}', '{$eoi_data["phone_number"]}', {$eoi_data["skill_wireshark"]}, {$eoi_data["skill_csharp"]}, {$eoi_data["skill_jira"]}, {$eoi_data["skill_github"]}, {$eoi_data["skill_scriptkiddie"]}, '{$eoi_data["other_skills"]}')";
+
+                // successful application, shows eoi number
+                if (mysqli_query($conn, $query)) {
+                    $eoi_number = mysqli_insert_id($conn);
+                    echo "<h1>Application Submitted Successfully!</h1>";
+                    echo "<p>Your EOI number is: <strong>" . $eoi_number . "</strong></p>";
+                } else {
+                    echo "<h1>Error</h1>";
+                    echo "<p>Error: " . mysqli_error($conn) . "</p>";
+                }
+
+                mysqli_close($conn);
+
+            } else {
+                // display validation errors with redirect link
+                echo "<h1>Application Submission Failed</h1>";
+                echo "<p>Please correct the following errors:</p>";
+                echo "<ul>";
+                foreach ($eoi_errors as $field => $error_message) {
+                    echo "<li>" . htmlspecialchars($error_message) . "</li>";
+                }
+                echo "</ul>";
+                echo "<p><a href='apply.php'>Go back to Application Form</a></p>";
+            }
         } else {
             // display connection error
             echo "<h1>Database Connection Error</h1>";
