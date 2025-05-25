@@ -25,7 +25,7 @@
     </section>
     
     <!-- Information will be sent through POST method and echoed back with the values inputted -->
-    <form id="form-container" action="process_eoi.php" method="post">
+    <form id="form-container" action="process_eoi.php" method="post" novalidate="novalidate">
 
         <div class="form-section form-section--personalinformation">
 
@@ -79,17 +79,17 @@
                     <fieldset>
                         <legend>Gender</legend> 
                         <div class="form-field">
-                            <input type="radio" name="gender" id="male" class="form-field__radio" required>
+                            <input type="radio" name="gender" id="male" class="form-field__radio" value="male" required>
                             <label for="male" class="form-field__label">Male</label>
                         </div>
 
                         <div class="form-field">
-                            <input type="radio" name="gender" id="female" class="form-field__radio">
+                            <input type="radio" name="gender" id="female" class="form-field__radio" value="female">
                             <label for="female" class="form-field__label">Female</label>
                         </div>
 
                         <div class="form-field">
-                            <input type="radio" name="gender" id="other" class="form-field__radio">      
+                            <input type="radio" name="gender" id="other" class="form-field__radio" value="other">      
                             <label for="other" class="form-field__label">Other</label>  
                         </div>
                     </fieldset>
@@ -209,6 +209,7 @@
 
                 <!-- Other Skills (Textbox) -->
                 <div class="form-field">
+                    <input type="checkbox" name="other_skills_checkbox" id="other_skills_checkbox" class="form-field__checkbox">
                     <label for="otherskills" class="form-field__label" id="form-field">Other Skills</label>
                     <textarea name="otherskills" id="otherskills" class="form-field__textarea" rows="3"></textarea>
                 </div>
