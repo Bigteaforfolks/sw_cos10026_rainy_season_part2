@@ -196,8 +196,27 @@
         echo "</table>";
     } elseif ($action == "Change EOI Status") {
 
+        // Set form values
+        $filter_eoi_number = mysqli_real_escape_string($conn, $_GET['filter-eoi-number']);
+        $status = mysqli_real_escape_string($conn, $_GET['status']);
 
-        
+        $sql_modify_query = "SELECT * FROM eoi WHERE eoi_number='%$filter_eoi_number%'";
+
+        $result = mysqli_query($conn, $sql_modify_query);
+
+        // Check ID Validity
+        if (mysqli_num_rows($result) !== 0) {
+            
+            // Set modify query
+            $sql_modify_query = "UPDATE eoi SET eoi_status = '%$status%' 
+                                 WHERE eoi_number = '%$filter_eoi_number%'";
+
+            $result = mysqli_query($conn, $sql_modify_query);
+
+        } else {
+            echo "<h2>Selcted EOI Number does not exist.</h2>"
+            echo "<p><a href='manage.php'>Go Back to Manage Page</a></p>"
+        }
     }
 
     include "footer.inc";
