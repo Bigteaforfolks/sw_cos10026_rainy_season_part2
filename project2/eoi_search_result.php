@@ -55,6 +55,40 @@
             }
         }
 
+        // Display records in a table
+        $result = mysqli_query($conn, $sql_query);
+
+        if (mysqli_num_rows($result) > 0) {
+            echo "<table>";
+            echo "<tr><th>ID</th><th>Make</th><th>Model</th><th>Price</th><th>Year</th></tr>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row['eoi_number'] . "</td>";
+                echo "<td>" . $row['job_reference_number'] . "</td>";
+                echo "<td>" . $row['first_name'] . "</td>";
+                echo "<td>" . $row['last_name'] . "</td>";
+                echo "<td>" . $row['date_of_birth'] . "</td>";
+                echo "<td>" . $row['gender'] . "</td>";
+                echo "<td>" . $row['address_street'] . "</td>";
+                echo "<td>" . $row['address_suburb'] . "</td>";
+                echo "<td>" . $row['address_state'] . "</td>";
+                echo "<td>" . $row['address_postcode'] . "</td>";
+                echo "<td>" . $row['email_address'] . "</td>";
+                echo "<td>" . $row['phone_number'] . "</td>";
+                echo "<td>" . $row['skill_wireshark'] . "</td>";
+                echo "<td>" . $row['skill_csharp'] . "</td>";
+                echo "<td>" . $row['skill_jira'] . "</td>";
+                echo "<td>" . $row['skill_github'] . "</td>";
+                echo "<td>" . $row['skill_scriptkiddie'] . "</td>";
+                echo "<td>" . $row['other_skills'] . "</td>";
+                echo "<td>" . $row['eoi_status'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "No matching EOIs found.";
+        }
+
         mysqli_close($conn);
         include "footer.inc";
     ?>
