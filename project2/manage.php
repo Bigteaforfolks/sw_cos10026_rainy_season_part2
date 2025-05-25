@@ -13,22 +13,23 @@
 
 <body id="manage-page">
 
-    <?php
-        include 'header.inc';
-    ?>
+<?php
+    include 'header.inc';
+?>
 
-    <!-- Information about the page -->
-    <section class="description">
+<!-- Information about the page -->
+<section class="description">
 
-        <h2>Rainy Season Manage Page</h2>
-        <p>You should only be here if you are the HR Manager of Rainy Season or have higher authority&period;</p>
+    <h2>Rainy Season Manage Page</h2>
+    <p>You should only be here if you are the HR Manager of Rainy Season or have higher authority&period;</p>
 
-    </section>
+</section>
 
-    <!-- List EOIs -->
+<!-- List EOIs -->
+<div class="sql-action">
     <form method="GET" action="eoi_search_result.php">
 
-        <!-- Filter by Job Position -->
+        <!-- Filter by Job Reference Number -->
         <label for="filter-job">Filter by Job Reference Number:</label>
         <select name="filter-job" id="filter-job">
             <option value="" selected>Job Reference Number</option>
@@ -45,15 +46,32 @@
         <input type="submit" value="List EOIs">
 
     </form>
+<div>
 
-    <!-- Delete EOIs -->
+<!-- Delete EOIs -->
+<div class="sql-action">
+    <form method="GET" action="eoi_search_result.php">
+
+        <!-- Filter by Job Reference Number -->
+        <label for="filter-job">Filter by Job Reference Number:</label>
+        <select name="filter-job" id="filter-job">
+            <option value="" selected>Job Reference Number</option>
+            <option value="RX7FD">RX7FD &#8209; Cybersecurity Specialist</option>
+            <option value="SIGC8">SIGC8 &#8209; Software Developer</option>
+        </select>
+
+        <!-- Submit Entered Values -->    
+        <input type="submit" value="Delete EOIs">
+
+    </form>
+</div>
 
 
-    <!-- Change EOI Status -->
+<!-- Change EOI Status -->
 
-    
-    <?php
-        include 'footer.inc';
-    ?>
+
+<?php
+    include 'footer.inc';
+?>
 
 </body>
