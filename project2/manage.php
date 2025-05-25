@@ -38,8 +38,8 @@
 
         <!-- Filter by First Name, Last Name, or Both -->
         <label for="filter-name">Filter by Name:</label>
-        <input type="text" name="first_name" placeholder="First Name">
-        <input type="text" name="last_name" placeholder="Last Name">
+        <input type="text" name="filter-first-name" placeholder="First Name">
+        <input type="text" name="filter-last-name" placeholder="Last Name">
 
         <!-- Submit Entered Values -->    
         <input type="submit" value="List EOIs">
