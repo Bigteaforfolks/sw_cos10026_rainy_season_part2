@@ -162,11 +162,10 @@
                     echo "<p>Error: " . mysqli_error($conn) . "</p>";
                 }
 
-                mysqli_close($conn);
-
             } else {
-                // display validation errors with redirect link
-                echo "<h1>Application Submission Failed</h1>";
+
+                include "description_error.inc";
+                echo "<h3>Application Submission Failed</h3>";
                 echo "<p>Please correct the following errors:</p>";
                 echo "<ul>";
                 foreach ($eoi_errors as $field => $error_message) {
@@ -177,16 +176,19 @@
             }
         } else {
             // display connection error
-            echo "<h1>Database Connection Error</h1>";
+            include "description_error.inc";
+            echo "<h3>Database Connection Error</h3>";
             echo "<p>Unable to connect to database. Error: " . mysqli_connect_error() . "</p>";
         }
     } else {
         // if no post method detected, deny user access
-        echo "<h1>Access Denied</h1>";
-        echo "<p><a href='apply.php'>Go back to Application Form</a></p>";
+        include "description_error.inc";
+        echo "<h3>Access Denied</h3>";
+        echo "<p>You should not be here, go back to the <a href='apply.php'>Application Form</a>, man.</p>";
     }
     
     // include footer
     include_once("footer.inc");
+    mysqli_close($conn);
 ?>
 </body>
