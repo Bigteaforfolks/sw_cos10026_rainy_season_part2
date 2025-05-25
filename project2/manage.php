@@ -68,7 +68,27 @@
 
 
 <!-- Change EOI Status -->
+<div class="sql-action">
+    <form method="GET" action="eoi_search_result.php">
 
+        <!-- Filter by EOI Number -->
+        <label for="filter-eoi-number">Enter the ID of the EOI whose status you would like to change:</label>
+        <input type="number" name="filter-eoi-number">
+
+        <!-- Select what status to change to --> 
+        <label for="status">Change status to:</label>
+        <select name="status" id="status">
+            <option value="" selected disabled>Status</option>
+            <option value="New">New</option>
+            <option value="Current">Current</option>
+            <option value="Final">Final</option>
+        </select>
+
+        <!-- Submit Entered Values -->    
+        <input type="submit" name="submit" value="Change EOI Status">
+
+    </form>
+</div>
 
 <?php
     include 'footer.inc';
