@@ -77,73 +77,73 @@
 
             // server-side validation
             if (trim($eoi_data["job_reference_number"]) === "") {
-                $eoi_errors[] = "Please select a Job Reference Number.<br>";
+                $eoi_errors[] = "Please select a Job Reference Number.";
             }
 
             if (trim($eoi_data["first_name"]) === "") {
-                $eoi_errors[] = "Please fill the First Name field.<br>";
+                $eoi_errors[] = "Please fill the First Name field.";
             } elseif (strlen($eoi_data["first_name"]) > 20) {
-                $eoi_errors[] = "First Name must have no more than 20 characters.<br>";
+                $eoi_errors[] = "First Name must have no more than 20 characters.";
             } elseif (!preg_match('/^[a-zA-Z]+$/', $eoi_data["first_name"])) {
-                $eoi_errors[] = "First Name field must contain only alpha characters.<br>";
+                $eoi_errors[] = "First Name field must contain only alpha characters.";
             }
 
             if (trim($eoi_data["last_name"]) === "") {
-                $eoi_errors[] = "Please fill the Last Name field.<br>";
+                $eoi_errors[] = "Please fill the Last Name field.";
             } elseif (strlen($eoi_data["last_name"]) > 20) {
-                $eoi_errors[] = "Last Name must have no more than 20 characters.<br>";
+                $eoi_errors[] = "Last Name must have no more than 20 characters.";
             } elseif (!preg_match('/^[a-zA-Z]+$/', $eoi_data["last_name"])) {
-                $eoi_errors[] = "Last Name field must contain only alpha characters.<br>";
+                $eoi_errors[] = "Last Name field must contain only alpha characters.";
             }
 
             if (trim($eoi_data["date_of_birth"]) === "") {
-                $eoi_errors[] = "Please fill in Date of Birth field.<br>";
+                $eoi_errors[] = "Please fill in Date of Birth field.";
             } elseif (!preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([12]\d{3})$/', $eoi_data["date_of_birth"], $matches)) {
-                $eoi_errors[] = "Date of Birth must be in dd/mm/yyyy format.<br>";
+                $eoi_errors[] = "Date of Birth must be in dd/mm/yyyy format.";
             } elseif (!checkdate((int)$matches[2], (int)$matches[1], (int)$matches[3])) { // Use captured groups from successful preg_match
-                $eoi_errors[] = "Date of Birth is not a valid calendar date.<br>";
+                $eoi_errors[] = "Date of Birth is not a valid calendar date.";
             }
 
             if (!isset($eoi_data["gender"])) {
-                $eoi_errors[] = "Please select a Gender.<br>";
+                $eoi_errors[] = "Please select a Gender.";
             }
 
             if (trim($eoi_data["address_street"]) === "") {
-                $eoi_errors[] = "Please fill in Street field.<br>";
+                $eoi_errors[] = "Please fill in Street field.";
             } elseif (strlen($eoi_data["address_street"]) > 40) {
-                $eoi_errors[] = "Street field must contain a maximum of 40 characters.<br>";
+                $eoi_errors[] = "Street field must contain a maximum of 40 characters.";
             }
 
             if (trim($eoi_data["address_suburb"]) === "") {
-                $eoi_errors[] = "Please fill in Suburb field.<br>";
+                $eoi_errors[] = "Please fill in Suburb field.";
             } elseif (strlen($eoi_data["address_suburb"]) > 40) {
-                $eoi_errors[] = "Suburb field must contain a maximum of 40 characters.<br>";
+                $eoi_errors[] = "Suburb field must contain a maximum of 40 characters.";
             }
             
             if (trim($eoi_data["address_state"]) === "") {
-                $eoi_errors[] = "Please select a State.<br>";
+                $eoi_errors[] = "Please select a State.";
             }
             
             if (trim($eoi_data["email_address"]) === "") {
-                $eoi_errors[] = "Please fill in Email field.<br>";
+                $eoi_errors[] = "Please fill in Email field.";
             } elseif (!filter_var($eoi_data["email_address"], FILTER_VALIDATE_EMAIL)) {
-                $eoi_errors[] = "Email must be valid.<br>";
+                $eoi_errors[] = "Email must be valid.";
             }
 
             if (trim($eoi_data["phone_number"]) === "") {
-                $eoi_errors[] = "Please fill in Phone Number field.<br>";
+                $eoi_errors[] = "Please fill in Phone Number field.";
             } elseif (!preg_match('/^[\d ]+$/', $eoi_data["phone_number"])) {
-                $eoi_errors[] = "Phone Number must contain only digits and/or spaces.<br>";
+                $eoi_errors[] = "Phone Number must contain only digits and/or spaces.";
             } else {
                 $phone_digits = preg_replace('/[^0-9]/', '', $eoi_data['phone_number']);
                 if (strlen($phone_digits) < 8 || strlen($phone_digits) > 12) {
-                    $eoi_errors[] = "Phone Number must contain 8 to 12 digits excluding spaces.<br>";
+                    $eoi_errors[] = "Phone Number must contain 8 to 12 digits excluding spaces.";
                 }
             }
 
             if (isset($eoi_data["checkbox_other_skills"])) {
-                if (!isset($eoi_data["other_skills"]) || trim($eoi_data["other_skills"]) === "") { 
-                    $eoi_errors[] = "Please fill in Other Skills field. Otherwise uncheck the Other Skills checkbox.<br>";
+                if (!isset($eoi_data["checkbox_other_skills"])) { 
+                    $eoi_errors[] = "Please fill in Other Skills field. Otherwise uncheck the Other Skills checkbox.";
                 }
             }
 
