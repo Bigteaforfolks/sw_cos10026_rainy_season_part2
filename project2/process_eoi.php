@@ -1,3 +1,7 @@
+<?php
+    require_once "settings.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,17 +17,13 @@
 <body>
 <?php
 
-    // include header
-    include_once("header.inc");
+    // Page Header
+    include("header.inc");
 
-    // sends user back if not using POST method
+    // Sends user back if not using POST method
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        // database connection
-        require_once "settings.php";
-        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-
-        // database connection success or error
+        // Database connection success or error
         if ($conn) {
 
             // create eoi table if not detected (copy of database)
