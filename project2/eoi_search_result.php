@@ -4,7 +4,6 @@
 
     $action = mysqli_real_escape_string($conn, $_GET['submit']);
     $sql_list_query = "SELECT * FROM eoi";
-    $sql_delete_query = null;
 ?>
 
 <!DOCTYPE html>
@@ -195,6 +194,10 @@
             echo "</tr>";
         }
         echo "</table>";
+    } elseif ($action == "Change EOI Status") {
+
+
+        
     }
 
     include "footer.inc";
