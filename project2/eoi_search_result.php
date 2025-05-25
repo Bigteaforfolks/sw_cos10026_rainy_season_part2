@@ -1,3 +1,13 @@
+<?php 
+    // Setting connection and global variables
+    include_once "settings.php";
+    $sql_query = "SELECT * FROM eoi";
+
+    $filter_job = mysqli_real_escape_string($conn, $_GET['filter-job']);
+    $filter_first_name = mysqli_real_escape_string($conn, $_GET['filter-first-name']);
+    $filter_last_name = mysqli_real_escape_string($conn, $_GET['filter-last-name']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,74 +23,86 @@
 
 <body id="eoi-search-result-page">
 
-    <?php
-        include "header.inc";
+<?php
+    include "header.inc";
 
-        // Connecting to database and initial query
-        include_once "settings.php";
-        $sql_query = "SELECT * FROM eoi";
+    // Display EOIs when List EOIs button selected
+    if (mysqli_real_escape_string($conn, $GET_['submit'] == "List EOIs")) {
 
-        // Set value of filters
-        $filter_job = mysqli_real_escape_string($conn, $_GET['filter-job']);
-        $filter_first_name = mysqli_real_escape_string($conn, $_GET['filter-first-name']);
-        $filter_last_name = mysqli_real_escape_string($conn, $_GET['filter-last-name']);
+        // Set Filter SQL Query
+        if (trim($filter_job) !== "") {
+            if (trim($filter_first_name) !== "" && trim($filter_last_name) !== "") { 
 
-        // Set job filter SQL
-        if (trim($filter_job) !== "") { // If $filter_job is set
-            if (trim($filter_first_name) !== "" && trim($filter_last_name) !== "") { // If $filter_job, $filter_first_name, and $filter_last_name is set
+                // When Job, First Name, and Last Name filters are set
                 $sql_query = "SELECT * FROM eoi
-                              WHERE job_reference_number LIKE '%$filter_job%'
+                                WHERE job_reference_number LIKE '%$filter_job%'
                                 AND first_name LIKE '%$filter_first_name%'
                                 AND last_name LIKE '%$filter_last_name%'";
-            } elseif (trim($filter_first_name) !== "" && trim($filter_last_name) === "") { // If $filter_job, and $filter_first_name is set
+            
+            } elseif (trim($filter_first_name) !== "" && trim($filter_last_name) === "") { 
+
+                // When Job, and First Name filters are set
                 $sql_query = "SELECT * FROM eoi
-                              WHERE job_reference_number LIKE '%$filter_job%'
+                                WHERE job_reference_number LIKE '%$filter_job%'
                                 AND first_name LIKE '%$filter_first_name%'";
-            } elseif (trim($filter_first_name) === "" && trim($filter_last_name) !== "") { // If $filter_job, and $filter_last_name is set
+
+            } elseif (trim($filter_first_name) === "" && trim($filter_last_name) !== "") { 
+                
+                // When Jobs, and Last Name filters are set
                 $sql_query = "SELECT * FROM eoi
-                              WHERE job_reference_number LIKE '%$filter_job%'
+                                WHERE job_reference_number LIKE '%$filter_job%'
                                 AND last_name LIKE '%$filter_last_name%'";
+
             }
-        } elseif (trim($filter_job) === "") { // If $filter_job is not set
-            if (trim($filter_first_name) !== "" && trim($filter_last_name) !== "") { // If $filter_first_name, and $filter_last_name is set
+        } elseif (trim($filter_job) === "") {
+            if (trim($filter_first_name) !== "" && trim($filter_last_name) !== "") { 
+                
+                // When First Name and Last Name filters are set
                 $sql_query = "SELECT * FROM eoi
-                              WHERE first_name LIKE '%$filter_first_name%'
+                                WHERE first_name LIKE '%$filter_first_name%'
                                 AND last_name LIKE '%$filter_last_name%'";
-            } elseif (trim($filter_first_name) !== "" && trim($filter_last_name) === "") { // If $filter_first_name is set
+
+            } elseif (trim($filter_first_name) !== "" && trim($filter_last_name) === "") { 
+                
+                // When First Name filter is set
                 $sql_query = "SELECT * FROM eoi
-                              WHERE first_name LIKE '%$filter_first_name%'";
-            } elseif (trim($filter_first_name) === "" && trim($filter_last_name) !== "") { // If $filter_last_name is set
+                                WHERE first_name LIKE '%$filter_first_name%'";
+
+            } elseif (trim($filter_first_name) === "" && trim($filter_last_name) !== "") { 
+                
+                // When Last Name filter is set
                 $sql_query = "SELECT * FROM eoi
-                               WHERE last_name LIKE '%$filter_last_name%'";
+                                WHERE last_name LIKE '%$filter_last_name%'";
+
             }
         }
 
-        // Display records in a table
+        // Set new query if one and display records in a table
         $result = mysqli_query($conn, $sql_query);
 
         if (mysqli_num_rows($result) > 0) {
             echo "<table>";
             echo "<tr>
-                   <th>EOI Number</th>
-                   <th>Job Reference Number</th>
-                   <th>First Name</th>
-                   <th>Last Name</th>
-                   <th>Date of Birth</th>
-                   <th>Gender</th>
-                   <th>Street</th>
-                   <th>Suburb</th>
-                   <th>State</th>
-                   <th>Postcode</th>
-                   <th>Email Address</th>
-                   <th>Phone Number</th>
-                   <th>Wireshark?</th>
-                   <th>C Sharp?</th>
-                   <th>Jira?</th>
-                   <th>Github?</th>
-                   <th>Scriptkiddie?</th>
-                   <th>Other Skills</th>
-                   <th>Status</th>
-                  </tr>";
+                    <th>EOI Number</th>
+                    <th>Job Reference Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Street</th>
+                    <th>Suburb</th>
+                    <th>State</th>
+                    <th>Postcode</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                    <th>Wireshark?</th>
+                    <th>C Sharp?</th>
+                    <th>Jira?</th>
+                    <th>Github?</th>
+                    <th>Scriptkiddie?</th>
+                    <th>Other Skills</th>
+                    <th>Status</th>
+                    </tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row['eoi_number'] . "</td>";
@@ -109,8 +131,18 @@
             echo "No matching EOIs found.";
         }
 
-        mysqli_close($conn);
-        include "footer.inc";
-    ?>
+    // Display deleted EOIs when Delete EOIs button selected
+    } elseif (mysqli_real_escape_string($conn, $GET_['submit'] == "Delete EOIs")) {
+
+
+
+    }
+
+    include "footer.inc";
+?>
 
 </body>
+
+<?php
+    mysqli_close($conn);
+?>
