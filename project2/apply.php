@@ -211,7 +211,7 @@
                 <div class="form-field">
                     <input type="checkbox" name="other_skills_checkbox" id="other_skills_checkbox" class="form-field__checkbox">
                     <label for="otherskills" class="form-field__label" id="form-field">Other Skills</label>
-                    <textarea name="otherskills" id="otherskills" class="form-field__textarea" rows="3"></textarea>
+                    <textarea name="other_skills" id="other_skills" class="form-field__textarea" rows="3"></textarea>
                 </div>
 
             </div>

@@ -50,115 +50,118 @@
                 eoi_status enum('New','Current','Final') NOT NULL DEFAULT 'New'
             );";
 
-            // setting eoi data
-            $eoi_data = array(
-                "job_reference_number" => $_POST["jobreferencenumber"] ?? '',
-                "first_name"           => $_POST["firstname"] ?? '',         
-                "last_name"            => $_POST["lastname"] ?? '',          
-                "date_of_birth"        => $_POST["dateofbirth"] ?? '',       
-                "gender"               => $_POST["gender"] ?? null,           
-                "address_street"       => $_POST["streetaddress"] ?? '',    
-                "address_suburb"       => $_POST["suburb"] ?? '',           
-                "address_state"        => $_POST["state"] ?? '',             
-                "address_postcode"     => $_POST["postcode"] ?? '',          
-                "email_address"        => $_POST["emailaddress"] ?? '',      
-                "phone_number"         => $_POST["phonenumber"] ?? '',       
-                "skill_wireshark"      => isset($_POST["wireshark"]) ? 1 : 0, 
-                "skill_csharp"         => isset($_POST["csharp"]) ? 1 : 0,    
-                "skill_jira"           => isset($_POST["jira"]) ? 1 : 0,      
-                "skill_github"         => isset($_POST["github"]) ? 1 : 0,    
-                "skill_scriptkiddie"   => isset($_POST["scriptkiddie"]) ? 1 : 0, 
-                "checkbox_other_skills"=> isset($_POST["checkbox_other_skills"]), 
-                "other_skills"         => $_POST["otherskills"] ?? ''      
-            );
-            
+            mysqli_query($conn, $create_table_sql);
+
+            // setting eoi data as individual variables
+            $job_reference_number = $_POST["jobreferencenumber"] ?? '';
+            $first_name           = $_POST["firstname"] ?? '';
+            $last_name            = $_POST["lastname"] ?? '';
+            $date_of_birth        = $_POST["dateofbirth"] ?? '';
+            $gender               = $_POST["gender"] ?? null;
+            $address_street       = $_POST["streetaddress"] ?? '';
+            $address_suburb       = $_POST["suburb"] ?? '';
+            $address_state        = $_POST["state"] ?? '';
+            $address_postcode     = $_POST["postcode"] ?? '';
+            $email_address        = $_POST["emailaddress"] ?? '';
+            $phone_number         = $_POST["phonenumber"] ?? '';
+            $skill_wireshark      = isset($_POST["wireshark"]) ? 1 : 0;
+            $skill_csharp         = isset($_POST["csharp"]) ? 1 : 0;
+            $skill_jira           = isset($_POST["jira"]) ? 1 : 0;
+            $skill_github         = isset($_POST["github"]) ? 1 : 0;
+            $skill_scriptkiddie   = isset($_POST["scriptkiddie"]) ? 1 : 0;
+            $other_skills_checkbox = isset($_POST["other_skills_checkbox"]);
+            $other_skills         = $_POST["other_skills"] ?? '';
+
             // contains errors to be presented if there are any
             $eoi_errors = [];
 
             // server-side validation
-            if (trim($eoi_data["job_reference_number"]) === "") {
+            if (trim($job_reference_number) === "") {
                 $eoi_errors[] = "Please select a Job Reference Number.";
             }
 
-            if (trim($eoi_data["first_name"]) === "") {
+            if (trim($first_name) === "") {
                 $eoi_errors[] = "Please fill the First Name field.";
-            } elseif (strlen($eoi_data["first_name"]) > 20) {
+            } elseif (strlen($first_name) > 20) {
                 $eoi_errors[] = "First Name must have no more than 20 characters.";
-            } elseif (!preg_match('/^[a-zA-Z]+$/', $eoi_data["first_name"])) {
+            } elseif (!preg_match('/^[a-zA-Z]+$/', $first_name)) {
                 $eoi_errors[] = "First Name field must contain only alpha characters.";
             }
 
-            if (trim($eoi_data["last_name"]) === "") {
+            if (trim($last_name) === "") {
                 $eoi_errors[] = "Please fill the Last Name field.";
-            } elseif (strlen($eoi_data["last_name"]) > 20) {
+            } elseif (strlen($last_name) > 20) {
                 $eoi_errors[] = "Last Name must have no more than 20 characters.";
-            } elseif (!preg_match('/^[a-zA-Z]+$/', $eoi_data["last_name"])) {
+            } elseif (!preg_match('/^[a-zA-Z]+$/', $last_name)) {
                 $eoi_errors[] = "Last Name field must contain only alpha characters.";
             }
 
-            if (trim($eoi_data["date_of_birth"]) === "") {
+            if (trim($date_of_birth) === "") {
                 $eoi_errors[] = "Please fill in Date of Birth field.";
-            } elseif (!preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([12]\d{3})$/', $eoi_data["date_of_birth"], $matches)) {
+            } elseif (!preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([12]\d{3})$/', $date_of_birth, $matches)) {
                 $eoi_errors[] = "Date of Birth must be in dd/mm/yyyy format.";
             } elseif (!checkdate((int)$matches[2], (int)$matches[1], (int)$matches[3])) { // Use captured groups from successful preg_match
                 $eoi_errors[] = "Date of Birth is not a valid calendar date.";
             }
 
-            if (!isset($eoi_data["gender"])) {
+            if (!isset($gender)) {
                 $eoi_errors[] = "Please select a Gender.";
             }
 
-            if (trim($eoi_data["address_street"]) === "") {
+            if (trim($address_street) === "") {
                 $eoi_errors[] = "Please fill in Street field.";
-            } elseif (strlen($eoi_data["address_street"]) > 40) {
+            } elseif (strlen($address_street) > 40) {
                 $eoi_errors[] = "Street field must contain a maximum of 40 characters.";
             }
 
-            if (trim($eoi_data["address_suburb"]) === "") {
+            if (trim($address_suburb) === "") {
                 $eoi_errors[] = "Please fill in Suburb field.";
-            } elseif (strlen($eoi_data["address_suburb"]) > 40) {
+            } elseif (strlen($address_suburb) > 40) {
                 $eoi_errors[] = "Suburb field must contain a maximum of 40 characters.";
             }
             
-            if (trim($eoi_data["address_state"]) === "") {
+            if (trim($address_state) === "") {
                 $eoi_errors[] = "Please select a State.";
             }
             
-            if (trim($eoi_data["email_address"]) === "") {
+            if (trim($email_address) === "") {
                 $eoi_errors[] = "Please fill in Email field.";
-            } elseif (!filter_var($eoi_data["email_address"], FILTER_VALIDATE_EMAIL)) {
+            } elseif (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
                 $eoi_errors[] = "Email must be valid.";
             }
 
-            if (trim($eoi_data["phone_number"]) === "") {
+            if (trim($phone_number) === "") {
                 $eoi_errors[] = "Please fill in Phone Number field.";
-            } elseif (!preg_match('/^[\d ]+$/', $eoi_data["phone_number"])) {
+            } elseif (!preg_match('/^[\d ]+$/', $phone_number)) {
                 $eoi_errors[] = "Phone Number must contain only digits and/or spaces.";
             } else {
-                $phone_digits = preg_replace('/[^0-9]/', '', $eoi_data['phone_number']);
+                $phone_digits = preg_replace('/[^0-9]/', '', $phone_number);
                 if (strlen($phone_digits) < 8 || strlen($phone_digits) > 12) {
                     $eoi_errors[] = "Phone Number must contain 8 to 12 digits excluding spaces.";
                 }
             }
 
-            if (isset($eoi_data["checkbox_other_skills"])) {
-                if (!isset($eoi_data["checkbox_other_skills"])) { 
-                    $eoi_errors[] = "Please fill in Other Skills field. Otherwise uncheck the Other Skills checkbox.";
-                }
+            // Other Skills validation
+            $other_skills_filled = trim($other_skills) !== '';
+
+            if ($other_skills_checkbox && !$other_skills_filled) {
+                $eoi_errors[] = "Please fill in the Other Skills field if you checked the box.";
+            } elseif (!$other_skills_checkbox && $other_skills_filled) {
+                $eoi_errors[] = "Please check the Other Skills box if you want to provide other skills.";
             }
 
             if (empty($eoi_errors)) {
                 // insert values into table as a new record
                 $query = "INSERT INTO eoi (job_reference_number, first_name, last_name, date_of_birth, gender, address_street, address_suburb, address_state, address_postcode, email_address, phone_number, skill_wireshark, skill_csharp, skill_jira, skill_github, skill_scriptkiddie, other_skills) 
-                VALUES ('{$eoi_data["job_reference_number"]}', '{$eoi_data["first_name"]}', '{$eoi_data["last_name"]}', '{$eoi_data["date_of_birth"]}', '{$eoi_data["gender"]}', '{$eoi_data["address_street"]}', '{$eoi_data["address_suburb"]}', '{$eoi_data["address_state"]}', '{$eoi_data["address_postcode"]}', '{$eoi_data["email_address"]}', '{$eoi_data["phone_number"]}', {$eoi_data["skill_wireshark"]}, {$eoi_data["skill_csharp"]}, {$eoi_data["skill_jira"]}, {$eoi_data["skill_github"]}, {$eoi_data["skill_scriptkiddie"]}, '{$eoi_data["other_skills"]}')";
+                VALUES ('$job_reference_number', '$first_name', '$last_name', '$date_of_birth', '$gender', '$address_street', '$address_suburb', '$address_state', '$address_postcode', '$email_address', '$phone_number', $skill_wireshark, $skill_csharp, $skill_jira, $skill_github, $skill_scriptkiddie, '$other_skills')";
 
                 // successful application, shows eoi number
                 if (mysqli_query($conn, $query)) {
                     $eoi_number = mysqli_insert_id($conn);
-                    echo "<h1>Application Submitted Successfully!</h1>";
+                    echo "<h2>Application Submitted Successfully!</h2>";
                     echo "<p>Your EOI number is: <strong>" . $eoi_number . "</strong></p>";
                 } else {
-                    echo "<h1>Error</h1>";
+                    include "description_error.inc";
                     echo "<p>Error: " . mysqli_error($conn) . "</p>";
                 }
 
