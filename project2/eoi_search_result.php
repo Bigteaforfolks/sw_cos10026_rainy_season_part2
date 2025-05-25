@@ -60,7 +60,27 @@
 
         if (mysqli_num_rows($result) > 0) {
             echo "<table>";
-            echo "<tr><th>ID</th><th>Make</th><th>Model</th><th>Price</th><th>Year</th></tr>";
+            echo "<tr>
+                   <th>EOI Number</th>
+                   <th>Job Reference Number</th>
+                   <th>First Name</th>
+                   <th>Last Name</th>
+                   <th>Date of Birth</th>
+                   <th>Gender</th>
+                   <th>Street</th>
+                   <th>Suburb</th>
+                   <th>State</th>
+                   <th>Postcode</th>
+                   <th>Email Address</th>
+                   <th>Phone Number</th>
+                   <th>Wireshark?</th>
+                   <th>C Sharp?</th>
+                   <th>Jira?</th>
+                   <th>Github?</th>
+                   <th>Scriptkiddie?</th>
+                   <th>Other Skills</th>
+                   <th>Status</th>
+                  </tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row['eoi_number'] . "</td>";
@@ -75,11 +95,11 @@
                 echo "<td>" . $row['address_postcode'] . "</td>";
                 echo "<td>" . $row['email_address'] . "</td>";
                 echo "<td>" . $row['phone_number'] . "</td>";
-                echo "<td>" . $row['skill_wireshark'] . "</td>";
-                echo "<td>" . $row['skill_csharp'] . "</td>";
-                echo "<td>" . $row['skill_jira'] . "</td>";
-                echo "<td>" . $row['skill_github'] . "</td>";
-                echo "<td>" . $row['skill_scriptkiddie'] . "</td>";
+                echo "<td>" . ($row['skill_wireshark'] == 1 ? "True" : "False") . "</td>";
+                echo "<td>" . ($row['skill_csharp'] == 1 ? "True" : "False") . "</td>";
+                echo "<td>" . ($row['skill_jira'] == 1 ? "True" : "False") . "</td>";
+                echo "<td>" . ($row['skill_github'] == 1 ? "True" : "False") . "</td>";
+                echo "<td>" . ($row['skill_scriptkiddie'] == 1 ? "True" : "False") . "</td>";
                 echo "<td>" . $row['other_skills'] . "</td>";
                 echo "<td>" . $row['eoi_status'] . "</td>";
                 echo "</tr>";

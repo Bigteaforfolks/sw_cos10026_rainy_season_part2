@@ -26,7 +26,7 @@
     </section>
 
     <!-- List EOIs -->
-    <form method="GET" action="search_result.php">
+    <form method="GET" action="eoi_search_result.php">
 
         <!-- Filter by Job Position -->
         <label for="filter-job">Filter by Job Reference Number:</label>
