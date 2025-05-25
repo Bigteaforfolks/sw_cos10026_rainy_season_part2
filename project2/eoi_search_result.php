@@ -145,9 +145,56 @@
         // Are you sure?
 
         // Set new query if one and display records in a table
-        $before = mysqli_query($conn, "SELECT * FROM eoi")
+        // $before = mysqli_query($conn, "SELECT * FROM eoi");
         $result = mysqli_query($conn, $sql_delete_query);
 
+        // List all EOIs
+        echo "<table>";
+        echo "<tr>
+                <th>EOI Number</th>
+                <th>Job Reference Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Street</th>
+                <th>Suburb</th>
+                <th>State</th>
+                <th>Postcode</th>
+                <th>Email Address</th>
+                <th>Phone Number</th>
+                <th>Wireshark?</th>
+                <th>C Sharp?</th>
+                <th>Jira?</th>
+                <th>Github?</th>
+                <th>Scriptkiddie?</th>
+                <th>Other Skills</th>
+                <th>Status</th>
+                </tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['eoi_number'] . "</td>";
+            echo "<td>" . $row['job_reference_number'] . "</td>";
+            echo "<td>" . $row['first_name'] . "</td>";
+            echo "<td>" . $row['last_name'] . "</td>";
+            echo "<td>" . $row['date_of_birth'] . "</td>";
+            echo "<td>" . $row['gender'] . "</td>";
+            echo "<td>" . $row['address_street'] . "</td>";
+            echo "<td>" . $row['address_suburb'] . "</td>";
+            echo "<td>" . $row['address_state'] . "</td>";
+            echo "<td>" . $row['address_postcode'] . "</td>";
+            echo "<td>" . $row['email_address'] . "</td>";
+            echo "<td>" . $row['phone_number'] . "</td>";
+            echo "<td>" . ($row['skill_wireshark'] == 1 ? "True" : "False") . "</td>";
+            echo "<td>" . ($row['skill_csharp'] == 1 ? "True" : "False") . "</td>";
+            echo "<td>" . ($row['skill_jira'] == 1 ? "True" : "False") . "</td>";
+            echo "<td>" . ($row['skill_github'] == 1 ? "True" : "False") . "</td>";
+            echo "<td>" . ($row['skill_scriptkiddie'] == 1 ? "True" : "False") . "</td>";
+            echo "<td>" . $row['other_skills'] . "</td>";
+            echo "<td>" . $row['eoi_status'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
     }
 
     include "footer.inc";
