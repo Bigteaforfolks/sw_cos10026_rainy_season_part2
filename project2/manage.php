@@ -55,7 +55,7 @@
         <!-- Filter by Job Reference Number -->
         <label for="filter-job">Filter by Job Reference Number:</label>
         <select name="filter-job" id="filter-job">
-            <option value="" selected>Job Reference Number</option>
+            <option value="" selected disabled>Job Reference Number</option>
             <option value="RX7FD">RX7FD &#8209; Cybersecurity Specialist</option>
             <option value="SIGC8">SIGC8 &#8209; Software Developer</option>
         </select>
