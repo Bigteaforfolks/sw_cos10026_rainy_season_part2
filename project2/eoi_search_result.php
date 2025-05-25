@@ -1,11 +1,18 @@
 <?php
-    // Setting connection and global variables
+    // Initialising and setting connection and global variables
     include_once "settings.php";
     $action = mysqli_real_escape_string($conn, $_GET['submit']);
     $query = "SELECT * FROM eoi";
 
     // Function to list all records
     function list_result($result) {
+
+        // Heading and Description
+        echo "<section class='description'>";
+        echo "<h2>Rainy Season Expressions of Interest</h2>";
+        echo "<p>Displayed below are the Expressions of Interest for job positions offered by Rainy Season&period;</p>";
+        echo "</section>";
+
         echo "<table>";
         echo "<tr>
                 <th>EOI Number</th>
@@ -140,10 +147,12 @@
             list_result($result);
 
         } else {
-            echo "No matching EOIs found.";
+            include "description_error.inc";
+            echo "<p>EOI does not exist.</p>";
+            echo "<p>Please confirm existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
         }
 
-    // Display deleted EOIs when Delete EOIs button selected
+    // Displays all EOIs after deleting records of a chosen job reference number
     } elseif ($action == "Delete EOIs") {
 
         // Set filter variables
@@ -160,9 +169,12 @@
             $result = mysqli_query($conn, "SELECT * FROM eoi");
             list_result($result);
         } else {
+            include "description_error.inc";
             echo "<p>Error deleting EOI: " . mysqli_error($conn) . "</p>";
+            echo "<p>Please confirm there are eligible EOIs to be deleted by listing all in the <a href='manage.php'>Manage Page.</a></p>";
         }
 
+    // Displays all EOIs after changing the status of a chosen record
     } elseif ($action == "Change EOI Status") {
 
         // Set form values
@@ -186,16 +198,19 @@
                 $result = mysqli_query($conn, "SELECT * FROM eoi");
                 list_result($result);
             } else {
+                include "description_error.inc";
                 echo "<p>Error modifying EOI: " . mysqli_error($conn) . "</p>";
+                echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
             }
 
         } else {
-            echo "<h2>Selected EOI Number does not exist.</h2>";
-            echo "<p>" . $filter_eoi_number . "</p>";
-            echo "<p><a href='manage.php'>Go Back to Manage Page</a></p>";
+            include "description_error.inc";
+            echo "<p>Selected EOI Number (ID: " . $filter_eoi_number . " does not exist.</p>";
+            echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
         }
     }
 
+    // Page Footer and SQL close
     include "footer.inc";
     mysqli_close($conn);
     
