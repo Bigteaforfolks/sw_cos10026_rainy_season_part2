@@ -1,11 +1,10 @@
 <?php 
     // Setting connection and global variables
     include_once "settings.php";
-    $sql_query = "SELECT * FROM eoi";
 
-    $filter_job = mysqli_real_escape_string($conn, $_GET['filter-job']);
-    $filter_first_name = mysqli_real_escape_string($conn, $_GET['filter-first-name']);
-    $filter_last_name = mysqli_real_escape_string($conn, $_GET['filter-last-name']);
+    $action = mysqli_real_escape_string($conn, $_GET['submit']);
+    $sql_list_query = "SELECT * FROM eoi";
+    $sql_delete_query = null;
 ?>
 
 <!DOCTYPE html>
@@ -27,14 +26,19 @@
     include "header.inc";
 
     // Display EOIs when List EOIs button selected
-    if (mysqli_real_escape_string($conn, $GET_['submit'] == "List EOIs")) {
+    if ($action == "List EOIs") {
+
+        // Set filter variables
+        $filter_job = mysqli_real_escape_string($conn, $_GET['filter-job']);
+        $filter_first_name = mysqli_real_escape_string($conn, $_GET['filter-first-name']);
+        $filter_last_name = mysqli_real_escape_string($conn, $_GET['filter-last-name']);
 
         // Set Filter SQL Query
         if (trim($filter_job) !== "") {
             if (trim($filter_first_name) !== "" && trim($filter_last_name) !== "") { 
 
                 // When Job, First Name, and Last Name filters are set
-                $sql_query = "SELECT * FROM eoi
+                $sql_list_query = "SELECT * FROM eoi
                                 WHERE job_reference_number LIKE '%$filter_job%'
                                 AND first_name LIKE '%$filter_first_name%'
                                 AND last_name LIKE '%$filter_last_name%'";
@@ -42,14 +46,14 @@
             } elseif (trim($filter_first_name) !== "" && trim($filter_last_name) === "") { 
 
                 // When Job, and First Name filters are set
-                $sql_query = "SELECT * FROM eoi
+                $sql_list_query = "SELECT * FROM eoi
                                 WHERE job_reference_number LIKE '%$filter_job%'
                                 AND first_name LIKE '%$filter_first_name%'";
 
             } elseif (trim($filter_first_name) === "" && trim($filter_last_name) !== "") { 
                 
                 // When Jobs, and Last Name filters are set
-                $sql_query = "SELECT * FROM eoi
+                $sql_list_query = "SELECT * FROM eoi
                                 WHERE job_reference_number LIKE '%$filter_job%'
                                 AND last_name LIKE '%$filter_last_name%'";
 
@@ -58,27 +62,27 @@
             if (trim($filter_first_name) !== "" && trim($filter_last_name) !== "") { 
                 
                 // When First Name and Last Name filters are set
-                $sql_query = "SELECT * FROM eoi
+                $sql_list_query = "SELECT * FROM eoi
                                 WHERE first_name LIKE '%$filter_first_name%'
                                 AND last_name LIKE '%$filter_last_name%'";
 
             } elseif (trim($filter_first_name) !== "" && trim($filter_last_name) === "") { 
                 
                 // When First Name filter is set
-                $sql_query = "SELECT * FROM eoi
+                $sql_list_query = "SELECT * FROM eoi
                                 WHERE first_name LIKE '%$filter_first_name%'";
 
             } elseif (trim($filter_first_name) === "" && trim($filter_last_name) !== "") { 
                 
                 // When Last Name filter is set
-                $sql_query = "SELECT * FROM eoi
+                $sql_list_query = "SELECT * FROM eoi
                                 WHERE last_name LIKE '%$filter_last_name%'";
 
             }
         }
 
         // Set new query if one and display records in a table
-        $result = mysqli_query($conn, $sql_query);
+        $result = mysqli_query($conn, $sql_list_query);
 
         if (mysqli_num_rows($result) > 0) {
             echo "<table>";
@@ -132,9 +136,17 @@
         }
 
     // Display deleted EOIs when Delete EOIs button selected
-    } elseif (mysqli_real_escape_string($conn, $GET_['submit'] == "Delete EOIs")) {
+    } elseif ($action == "Delete EOIs") {
 
+        // Set filter variables
+        $filter_job = mysqli_real_escape_string($conn, $_GET['filter-job']);
+        $sql_delete_query = "DELETE FROM eoi WHERE job_reference_number LIKE '%$filter_job%'";
 
+        // Are you sure?
+
+        // Set new query if one and display records in a table
+        $before = mysqli_query($conn, "SELECT * FROM eoi")
+        $result = mysqli_query($conn, $sql_delete_query);
 
     }
 
