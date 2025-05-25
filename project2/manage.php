@@ -43,7 +43,7 @@
         <input type="text" name="filter-last-name" placeholder="Last Name">
 
         <!-- Submit Entered Values -->    
-        <input type="submit" value="List EOIs">
+        <input type="submit" name="submit" value="List EOIs">
 
     </form>
 <div>
@@ -61,7 +61,7 @@
         </select>
 
         <!-- Submit Entered Values -->    
-        <input type="submit" value="Delete EOIs">
+        <input type="submit" name="submit" value="Delete EOIs">
 
     </form>
 </div>
