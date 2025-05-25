@@ -17,6 +17,41 @@
         include 'header.inc';
     ?>
 
+    <!-- Information about the page -->
+    <section class="description">
+
+        <h2>Rainy Season Manage Page</h2>
+        <p>You should only be here if you are the HR Manager of Rainy Season or have higher authority&period;</p>
+
+    </section>
+
+    <!-- List EOIs -->
+    <form method="GET" action="search_result.php">
+
+        <!-- Filter by Job Position -->
+        <label for="filter-job">Filter by Job Reference Number:</label>
+        <select name="filter-job" id="filter-job">
+            <option value="" selected>Job Reference Number</option>
+            <option value="RX7FD">RX7FD &#8209; Cybersecurity Specialist</option>
+            <option value="SIGC8">SIGC8 &#8209; Software Developer</option>
+        </select>  
+
+        <!-- Filter by First Name, Last Name, or Both -->
+        <label for="filter-name">Filter by Name:</label>
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="last_name" placeholder="Last Name">
+
+        <!-- Submit Entered Values -->    
+        <input type="submit" value="List EOIs">
+
+    </form>
+
+    <!-- Delete EOIs -->
+
+
+    <!-- Change EOI Status -->
+
+    
     <?php
         include 'footer.inc';
     ?>
