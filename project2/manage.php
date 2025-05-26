@@ -97,7 +97,7 @@ if (!isset($_SESSION['username'])) {
             </div>
 
             <!-- Submit Entered Values -->
-            <div class="form-input"> <!-- Added form-input div -->
+            <div class="form-input">
                 <input type="submit" name="submit" class="form-button" value="List EOIs">
             </div>
         </form>
