@@ -205,7 +205,7 @@
 
         } else {
             include "description_error.inc";
-            echo "<p>Selected EOI Number (ID: " . $filter_eoi_number . " does not exist.</p>";
+            echo "<p>Selected EOI Number (ID: " . $filter_eoi_number . ") does not exist.</p>";
             echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
         }
     }

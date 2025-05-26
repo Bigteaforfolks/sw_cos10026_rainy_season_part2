@@ -84,7 +84,26 @@ if (!isset($_SESSION['username'])) {
 
         <!-- Filter by EOI Number -->
         <label for="filter-eoi-number">Enter the ID of the EOI whose status you would like to change:</label>
-        <input type="number" name="filter-eoi-number">
+        
+        <!-- AI assisted content
+        Prompt: How can I dynamically change the range of this input? -->
+        <?php
+        require_once("settings.php");
+        $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+        $max_eoi_id = 0;
+
+        if ($conn) {
+            $query = "SELECT MAX(eoi_number) AS max_id FROM eoi";
+            $result = mysqli_query($conn, $query);
+            if ($result && $row = mysqli_fetch_assoc($result)) {
+                $max_eoi_id = $row['max_id'] ?? 0;
+            }
+        }
+        ?>
+        
+        <input type="number" name="filter-eoi-number" min="1" max="<?php echo $max_eoi_id; ?>">
+        <!-- End of AI assisted content -->
 
         <!-- Select what status to change to --> 
         <label for="status">Change status to:</label>
