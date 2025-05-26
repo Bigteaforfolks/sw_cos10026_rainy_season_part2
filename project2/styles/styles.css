@@ -482,3 +482,9 @@ aside #apply-link a:hover {
 .interests table thead, .interests table tbody {
     font-size: 1.25em;
 }
+
+/* EOI styling */
+#eoi_table {
+    margin: 50px auto;  
+    width: 97.5%;
+}
