@@ -114,6 +114,12 @@
                                 WHERE job_reference_number LIKE '%$filter_job%'
                                 AND last_name LIKE '%$filter_last_name%'";
 
+            } elseif (trim($filter_first_name) === "" && trim($filter_last_name) === "") { 
+                
+                // When Jobs filter is set
+                $query = "SELECT * FROM eoi
+                                WHERE job_reference_number LIKE '%$filter_job%'";
+
             }
         } elseif (trim($filter_job) === "") {
             if (trim($filter_first_name) !== "" && trim($filter_last_name) !== "") { 
