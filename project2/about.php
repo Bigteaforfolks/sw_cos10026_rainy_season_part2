@@ -61,9 +61,11 @@
                     <ul>
                         <li>Main page</li>
                         <li>Apply page</li>
-                        <li>CSS style file</li>
-                        <li>Code comment checking</li>
-                        <li>Jira project management</li>
+                        <li>Manage page</li>
+                        <li>Validating and adding records to database</li>
+                        <li>CSS styling</li>
+                        <li>Checking of code for comments</li>
+                        <li>Project management with Jira</li>
                     </ul>
                 </dd>
             </div>
@@ -74,11 +76,11 @@
                     <ul>
                         <li>Jobs page</li>
                         <li>About page</li>
-                        <li>CSS style file</li>
+                        <li>Dynamic updating of job elements</li>
+                        <li>Login and signup functions</li>
+                        <li>CSS styling</li>
                         <li>Accessibility checking</li>
-                        <li>Jira project management</li>
-                        <li>Site modularisation using PHP and .inc files</li>
-                        <li>Conversion of jobs page to  dynamic updating via PHP</li>
+                        <li>Project management with Jira</li>
                     </ul>
                 </dd>   
             </div>     
