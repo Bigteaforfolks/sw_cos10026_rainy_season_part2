@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Register</title>
 
     <!-- Reference to external CSS file -->
     <link href="styles/styles.css" rel="stylesheet">
@@ -14,7 +14,7 @@
 
     <!-- Information about the page -->
     <section class="description">
-        <h2>Login</h2>
+        <h2>Register</h2>
     </section>
 
     <form method="POST" action="process_login.php">
