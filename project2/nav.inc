@@ -4,5 +4,6 @@
     <li class="menu"><a href="apply.php" title="This takes you to the Job Applications page.">Apply</a></li>
     <li class="menu"><a href="about.php" title="This takes you to the About Us page.">About</a></li>
     <li class="menu"><a href="manage.php" title="This takes you to the Management page.">Management</a></li>
+    <li class="menu"><a href="enhancements.php" title="This takes you to the Enhancements page.">Enhancements</a></li>
     <li class="menu"><a href="mailto:info@rainyseason.com.au" title="Allows you to contact our email.">Email</a></li>
 </ul>

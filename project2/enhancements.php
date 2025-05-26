@@ -27,7 +27,7 @@
         <!-- Definition list to tie enhancement and description together -->
         <dl>
             <div class="login-page">
-                <dt>Access to manage.php restriction</dt>
+                <dt>Restriction of access to manage.php</dt>
                 <dd>
                     <ul>
                         <li>Created table "users" in database</li>
@@ -38,9 +38,24 @@
                 </dd>
             </div>   
         </dl>
-    </section>
 
-    <hr class="separator"> 
+        <hr class="separator"> 
+
+        <dl>
+            <div class="registration">
+                <dt>Registration function</dt>
+                <dd>
+                    <ul>
+                        <li>Coded registration processing</li>
+                        <li>Protected input from SQL injection</li>
+                        <li>Checked for duplicate usernames in users table and denied registration if match was found</li>
+                        <li>Checked for matching confirm password field</li>
+                        <li>Stored username and hashed password in users table</li>
+                    </ul>
+                </dd>
+            </div>   
+        </dl>
+    </section>
 
     <?php
         include 'footer.inc';
