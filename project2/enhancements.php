@@ -24,35 +24,19 @@
     <section id="enhancements">
         <h3>Enhancements made to site</h3>
         
-        <!-- Definition list to tie member and contribution together -->
+        <!-- Definition list to tie enhancement and description together -->
         <dl>
-            <div class="jacob-contribution">
-                <dt>Jacob</dt>
+            <div class="login-page">
+                <dt>Access to manage.php restriction</dt>
                 <dd>
                     <ul>
-                        <li>Main page</li>
-                        <li>Apply page</li>
-                        <li>CSS style file</li>
-                        <li>Code comment checking</li>
-                        <li>Jira project management</li>
+                        <li>Created table "users" in database</li>
+                        <li>Coded login processing</li>
+                        <li>Protected input from SQL injection</li>
+                        <li>Checked password against hashed password in database</li>
                     </ul>
                 </dd>
-            </div>
-
-            <div class="oakley-contribution">
-                <dt>Oakley</dt>
-                <dd>
-                    <ul>
-                        <li>Jobs page</li>
-                        <li>About page</li>
-                        <li>CSS style file</li>
-                        <li>Accessibility checking</li>
-                        <li>Jira project management</li>
-                        <li>Site modularisation using PHP and .inc files</li>
-                        <li>Conversion of jobs page to  dynamic updating via PHP</li>
-                    </ul>
-                </dd>   
-            </div>     
+            </div>   
         </dl>
     </section>
 
