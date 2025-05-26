@@ -7,7 +7,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
   $pw = $_POST['password'];
 
   $query = $conn->prepare("SELECT * FROM users WHERE username = ?");
-  $query->bind_param("ss", $username);
+  $query->bind_param("s", $username);
   $query->execute();
   $result = $query->get_result();
   $user = $result->fetch_assoc();
