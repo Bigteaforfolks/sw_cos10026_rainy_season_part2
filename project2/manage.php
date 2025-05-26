@@ -43,8 +43,40 @@ if (!isset($_SESSION['username'])) {
         <label for="filter-job">Filter by Job Reference Number:</label>
         <select name="filter-job" id="filter-job">
             <option value="" selected>Job Reference Number</option>
-            <option value="RX7FD">RX7FD &#8209; Cybersecurity Specialist</option>
-            <option value="SIGC8">SIGC8 &#8209; Software Developer</option>
+            
+            <!-- AI assisted content
+            Prompt: Change this code to a foreach loop to allow it to run twice, and skip duplicate options -->
+            <?php
+            session_start();
+            require_once("settings.php");
+
+            $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+            if ($conn) {
+                $query = "SELECT job_reference_number FROM eoi";
+                $result = mysqli_query($conn, $query);
+
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    $seen_refs = [];
+
+                    foreach ($rows as $row) {
+                        $ref = $row['job_reference_number'];
+                        if (!in_array($ref, $seen_refs)) {
+                            $seen_refs[] = $ref;
+                            $safe_ref = htmlspecialchars($ref);
+                            echo "<option value='{$safe_ref}'>{$safe_ref}</option>";
+                        }
+                    }
+                }
+
+                mysqli_close($conn);
+            } else {
+                echo "<option disabled>No applications for any positions.</option>";
+            }
+            ?>
+            
+            <!-- End of AI assisted content -->
         </select>  
 
         <!-- Filter by First Name, Last Name, or Both -->
@@ -66,8 +98,40 @@ if (!isset($_SESSION['username'])) {
         <label for="filter-job">Filter by Job Reference Number:</label>
         <select name="filter-job" id="filter-job">
             <option value="" selected disabled>Job Reference Number</option>
-            <option value="RX7FD">RX7FD &#8209; Cybersecurity Specialist</option>
-            <option value="SIGC8">SIGC8 &#8209; Software Developer</option>
+
+            <!-- AI assisted content
+            Prompt: Change this code to a foreach loop to allow it to run twice, and skip duplicate options -->
+            <?php
+            session_start();
+            require_once("settings.php");
+
+            $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+            if ($conn) {
+                $query = "SELECT job_reference_number FROM eoi";
+                $result = mysqli_query($conn, $query);
+
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    $seen_refs = [];
+
+                    foreach ($rows as $row) {
+                        $ref = $row['job_reference_number'];
+                        if (!in_array($ref, $seen_refs)) {
+                            $seen_refs[] = $ref;
+                            $safe_ref = htmlspecialchars($ref);
+                            echo "<option value='{$safe_ref}'>{$safe_ref}</option>";
+                        }
+                    }
+                }
+
+                mysqli_close($conn);
+            } else {
+                echo "<option disabled>No applications for any positions.</option>";
+            }
+            ?>
+
+            <!-- End of AI assisted content -->
         </select>
 
         <!-- Submit Entered Values -->    
