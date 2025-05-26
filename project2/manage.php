@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("settings.php");
 
 // check if user is logged in
 if (!isset($_SESSION['username'])) {
@@ -35,160 +36,179 @@ if (!isset($_SESSION['username'])) {
 
 </section>
 
-<!-- List EOIs -->
-<div class="sql-action">
-    <form method="GET" action="eoi_search_result.php">
+<div id="form-container">
 
-        <!-- Filter by Job Reference Number -->
-        <label for="filter-job">Filter by Job Reference Number:</label>
-        <select name="filter-job" id="filter-job">
-            <option value="" selected>Job Reference Number</option>
-            
-            <!-- AI assisted content
-            Prompt: Change this code to a foreach loop to allow it to run twice, and skip duplicate options -->
-            <?php
-            session_start();
-            require_once("settings.php");
+    <!-- List EOIs -->
+    <div class="form-section"> <!-- Changed .sql-action to .form-section -->
+        <form method="GET" action="eoi_search_result.php">
+            <div class="form-group">
+                <div class="form-field">
 
-            $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+                    <!-- Filter by Job Reference Number -->
+                    <label for="filter-job-list" class="form-field__label">Filter by Job Reference Number:</label> <!-- Updated for and class -->
+                    <select name="filter-job" id="filter-job-list" class="form-field__select"> <!-- Added class, unique ID -->
+                        <option value="" selected>Job Reference Number</option>
+                        
+                        <!-- AI assisted content
+                        Prompt: Change this code to a foreach loop to allow it to run twice, and skip duplicate options -->
+                        <?php
+                        require_once("settings.php");
 
-            if ($conn) {
-                $query = "SELECT job_reference_number FROM eoi";
-                $result = mysqli_query($conn, $query);
+                        $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
-                if ($result && mysqli_num_rows($result) > 0) {
-                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                    $seen_refs = [];
+                        if ($conn) {
+                            $query = "SELECT job_reference_number FROM eoi";
+                            $result = mysqli_query($conn, $query);
 
-                    foreach ($rows as $row) {
-                        $ref = $row['job_reference_number'];
-                        if (!in_array($ref, $seen_refs)) {
-                            $seen_refs[] = $ref;
-                            $safe_ref = htmlspecialchars($ref);
-                            echo "<option value='{$safe_ref}'>{$safe_ref}</option>";
+                            if ($result && mysqli_num_rows($result) > 0) {
+                                $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                $seen_refs = [];
+
+                                foreach ($rows as $row) {
+                                    $ref = $row['job_reference_number'];
+                                    if (!in_array($ref, $seen_refs)) {
+                                        $seen_refs[] = $ref;
+                                        $safe_ref = htmlspecialchars($ref);
+                                        echo "<option value='{$safe_ref}'>{$safe_ref}</option>";
+                                    }
+                                }
+                            }
+
+                            mysqli_close($conn);
+                        } else {
+                            echo "<option disabled>No applications for any positions.</option>";
                         }
-                    }
-                }
+                        ?>
+                        <!-- End of AI assisted content -->
 
-                mysqli_close($conn);
-            } else {
-                echo "<option disabled>No applications for any positions.</option>";
-            }
-            ?>
+                    </select>  
+                </div>
+                
+                <!-- Filter by First Name, Last Name, or Both -->
+                <div class="form-field">
+                    <label for="filter-first-name-list" class="form-field__label">First Name:</label>
+                    <input type="text" name="filter-first-name" id="filter-first-name-list" class="form-field__textbox" placeholder="First Name">
+                </div>
+                <div class="form-field">
+                    <label for="filter-last-name-list" class="form-field__label">Last Name:</label>
+                    <input type="text" name="filter-last-name" id="filter-last-name-list" class="form-field__textbox" placeholder="Last Name">
+                </div>
 
-            <!-- End of AI assisted content -->
-        </select>  
+            </div>
 
-        <!-- Filter by First Name, Last Name, or Both -->
-        <label for="filter-name">Filter by Name:</label>
-        <input type="text" name="filter-first-name" placeholder="First Name">
-        <input type="text" name="filter-last-name" placeholder="Last Name">
+            <!-- Submit Entered Values -->
+            <div class="form-input"> <!-- Added form-input div -->
+                <input type="submit" name="submit" value="List EOIs">
+            </div>
+        </form>
+    </div> <!-- Corrected closing div -->
 
-        <!-- Submit Entered Values -->    
-        <input type="submit" name="submit" value="List EOIs">
+    <!-- Delete EOIs -->
+    <div class="form-section">
+        <form method="GET" action="eoi_search_result.php">
+            <div class="form-group">
 
-    </form>
-<div>
+                <!-- Filter by Job Reference Number -->
+                <div class="form-field">
+                    <label for="filter-job-delete" class="form-field__label">Filter by Job Reference Number:</label>
+                    <select name="filter-job" id="filter-job-delete" class="form-field__select">
+                        <option value="" selected disabled>Job Reference Number</option>
+                        <?php
+                        require_once("settings.php");
 
-<!-- Delete EOIs -->
-<div class="sql-action">
-    <form method="GET" action="eoi_search_result.php">
+                        $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
-        <!-- Filter by Job Reference Number -->
-        <label for="filter-job">Filter by Job Reference Number:</label>
-        <select name="filter-job" id="filter-job">
-            <option value="" selected disabled>Job Reference Number</option>
+                        if ($conn) {
+                            $query = "SELECT job_reference_number FROM eoi";
+                            $result = mysqli_query($conn, $query);
 
-            <!-- AI assisted content
-            Prompt: Change this code to a foreach loop to allow it to run twice, and skip duplicate options -->
-            <?php
-            session_start();
-            require_once("settings.php");
+                            if ($result && mysqli_num_rows($result) > 0) {
+                                $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                                $seen_refs = [];
 
-            $conn = mysqli_connect($host, $user, $pwd, $sql_db);
-
-            if ($conn) {
-                $query = "SELECT job_reference_number FROM eoi";
-                $result = mysqli_query($conn, $query);
-
-                if ($result && mysqli_num_rows($result) > 0) {
-                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                    $seen_refs = [];
-
-                    foreach ($rows as $row) {
-                        $ref = $row['job_reference_number'];
-                        if (!in_array($ref, $seen_refs)) {
-                            $seen_refs[] = $ref;
-                            $safe_ref = htmlspecialchars($ref);
-                            echo "<option value='{$safe_ref}'>{$safe_ref}</option>";
+                                foreach ($rows as $row) {
+                                    $ref = $row['job_reference_number'];
+                                    if (!in_array($ref, $seen_refs)) {
+                                        $seen_refs[] = $ref;
+                                        $safe_ref = htmlspecialchars($ref);
+                                        echo "<option value='{$safe_ref}'>{$safe_ref}</option>";
+                                    }
+                                }
+                            }
+                            mysqli_close($conn);
+                        } else {
+                            echo "<option disabled>No applications for any positions.</option>";
                         }
+                        ?>
+                        <!-- End of AI assisted content -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit Entered Values -->   
+            <div class="form-input">
+                <input type="submit" name="submit" value="Delete EOIs">
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Change EOI Status -->
+    <div class="form-section">
+        <form method="GET" action="eoi_search_result.php">
+            <div class="form-group">
+                <div class="form-field">
+
+                    <!-- Filter by EOI Number -->
+                    <label for="filter-eoi-number" class="form-field__label">Enter EOI ID to change status:</label> <!-- Updated class, slightly rephrased for clarity with 20% width -->
+                    
+                    <!-- AI assisted content
+                    Prompt: How can I dynamically change the range of this input? -->
+                    <?php
+                    $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+                    $max_eoi_id = 0;
+                    if ($conn_eoi_max) {
+                        $query_max = "SELECT MAX(eoi_number) AS max_id FROM eoi";
+                        $result_max = mysqli_query($conn_eoi_max, $query_max);
+                        if ($result_max && $row_max = mysqli_fetch_assoc($result_max)) {
+                            $max_eoi_id = $row_max['max_id'] ?? 0;
+                        }
+                        mysqli_close($conn_eoi_max);
                     }
-                }
+                    ?>
+                    <input type="number" name="filter-eoi-number" id="filter-eoi-number" class="form-field__textbox" min="1" max="<?php echo $max_eoi_id; ?>">
+                </div>
 
-                mysqli_close($conn);
-            } else {
-                echo "<option disabled>No applications for any positions.</option>";
-            }
-            ?>
+                <div class="form-field">
+                    <label for="status" class="form-field__label">Change status to:</label>
+                    <select name="status" id="status" class="form-field__select">
+                        <option value="" selected disabled>Status</option>
+                        <option value="New">New</option>
+                        <option value="Current">Current</option>
+                        <option value="Final">Final</option>
+                    </select>
+                </div>
+            </div>
 
-            <!-- End of AI assisted content -->
-        </select>
+            <!-- Submit Entered Values --> 
+            <div class="form-input">
+                <input type="submit" name="submit" value="Change EOI Status">
+            </div>
+        </form>
+    </div>
 
-        <!-- Submit Entered Values -->    
-        <input type="submit" name="submit" value="Delete EOIs">
-
-    </form>
-</div>
-
-
-<!-- Change EOI Status -->
-<div class="sql-action">
-    <form method="GET" action="eoi_search_result.php">
-
-        <!-- Filter by EOI Number -->
-        <label for="filter-eoi-number">Enter the ID of the EOI whose status you would like to change:</label>
-        
-        <!-- AI assisted content
-        Prompt: How can I dynamically change the range of this input? -->
-        <?php
-        require_once("settings.php");
-        $conn = mysqli_connect($host, $user, $pwd, $sql_db);
-
-        $max_eoi_id = 0;
-
-        if ($conn) {
-            $query = "SELECT MAX(eoi_number) AS max_id FROM eoi";
-            $result = mysqli_query($conn, $query);
-            if ($result && $row = mysqli_fetch_assoc($result)) {
-                $max_eoi_id = $row['max_id'] ?? 0;
-            }
-        }
-        ?>
-        
-        <input type="number" name="filter-eoi-number" min="1" max="<?php echo $max_eoi_id; ?>">
-        <!-- End of AI assisted content -->
-
-        <!-- Select what status to change to --> 
-        <label for="status">Change status to:</label>
-        <select name="status" id="status">
-            <option value="" selected disabled>Status</option>
-            <option value="New">New</option>
-            <option value="Current">Current</option>
-            <option value="Final">Final</option>
-        </select>
-
-        <!-- Submit Entered Values -->    
-        <input type="submit" name="submit" value="Change EOI Status">
-
-    </form>
-
-    <form method="get" action="register.php" style="display: inline;">
-    <button type="submit">Register new admin</button>
-    </form>
-
-    <form method="post" action="logout.php" style="display: inline;">
-    <button type="submit">Log Out</button>
-    </form>
+    <div class="form-section">
+        <div class="form-group">
+             <div class="form-input">
+                <form method="get" action="register.php">
+                    <button type="submit">Register new admin</button>
+                </form>
+                <form method="post" action="logout.php">
+                    <button type="submit">Log Out</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php
