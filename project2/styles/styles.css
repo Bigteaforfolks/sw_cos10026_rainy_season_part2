@@ -429,7 +429,7 @@ aside #apply-link a:hover {
 }
 
 #submit-button:active {
-    box-shadow: 0;
+    box-shadow: none;
 }
 
 /* About page CSS styling */
@@ -524,7 +524,7 @@ aside #apply-link a:hover {
 }
 
 #login-page .form-input .form-button:active, #manage-page .form-input .form-button:active, #register-page .form-input .form-button:active {
-    box-shadow: 0;
+    box-shadow: none;
 }
 
 
