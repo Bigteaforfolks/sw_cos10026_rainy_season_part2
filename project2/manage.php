@@ -75,7 +75,7 @@ if (!isset($_SESSION['username'])) {
                 echo "<option disabled>No applications for any positions.</option>";
             }
             ?>
-            
+
             <!-- End of AI assisted content -->
         </select>  
 
@@ -182,9 +182,13 @@ if (!isset($_SESSION['username'])) {
 
     </form>
 
+    <form method="get" action="register.php" style="display: inline;">
+    <button type="submit">Register new admin</button>
+    </form>
+
     <form method="post" action="logout.php" style="display: inline;">
     <button type="submit">Log Out</button>
-</form>
+    </form>
 </div>
 
 <?php

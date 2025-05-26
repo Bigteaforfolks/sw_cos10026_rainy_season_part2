@@ -14,17 +14,26 @@
 
     <!-- Information about the page -->
     <section class="description">
-        <h2>Register</h2>
+        <h2>Register new admin</h2>
     </section>
 
-    <form method="POST" action="process_login.php">
-        <label class="user">Username: </label>
-        <input type="text" id="username" name="username" autocomplete="off" required>
+    <form method="POST" action="process_register.php">
+        <div>
+            <label class="user">Username: </label>
+            <input type="text" id="username" name="username" autocomplete="off" required>
+        </div>
 
-        <label class="pass">Password: </label>
-        <input type="password" id="password" name="password" required>
+        <div>
+            <label class="pass">Password: </label>
+            <input type="password" id="password" name="password" required>
+        </div>
 
-        <input type="submit" value="Log in">
+        <div>
+            <label class="pass">Confirm Password: </label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <input type="submit" value="Register">
     </form>
 
     <?php

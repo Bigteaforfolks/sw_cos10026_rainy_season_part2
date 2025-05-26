@@ -18,11 +18,15 @@
     </section>
 
     <form method="POST" action="process_login.php">
-        <label class="user">Username: </label>
-        <input type="text" id="username" name="username" autocomplete="off" required>
+        <div>
+            <label class="user">Username: </label>
+            <input type="text" id="username" name="username" autocomplete="off" required>
+        </div>
 
-        <label class="pass">Password: </label>
-        <input type="password" id="password" name="password" required>
+        <div>
+            <label class="pass">Password: </label>
+            <input type="password" id="password" name="password" required>
+        </div>
 
         <input type="submit" value="Log in">
     </form>
