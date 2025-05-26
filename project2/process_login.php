@@ -21,8 +21,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     echo "Incorrect username or password.";
   }
 } else {
-  // if no post method detected, deny user access
-  echo "<h3>Login failed</h3>";
-  echo "<p>Return to <a href='login.php'>Login</a> and try again.</p>";
+  // if no post method detected, redirect to login page
+  header("Location: login.php");
+
 }
 ?>
