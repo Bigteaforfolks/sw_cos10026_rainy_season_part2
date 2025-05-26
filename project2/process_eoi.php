@@ -131,42 +131,42 @@
             } else {
                 switch ($address_state) {
                     case 'VIC':
-                        if ($postcode < '3000' || $postcode > '3999') {
+                        if ($address_postcode < '3000' || $address_postcode > '3999') {
                             $eoi_errors[] = "Postcode must be between 3000 and 3999 for Victoria.";
                         }
                         break;
                     case 'NSW':
-                        if ($postcode < '1000' || $postcode > '1999') {
+                        if ($address_postcode < '1000' || $address_postcode > '1999') {
                             $eoi_errors[] = "Postcode must be between 1000 and 1999 for New South Wales.";
                         }
                         break;
                     case 'QLD':
-                        if ($postcode < '4000' || $postcode > '4999') {
+                        if ($address_postcode < '4000' || $address_postcode > '4999') {
                             $eoi_errors[] = "Postcode must be between 4000 and 4999 for Queensland.";
                         }
                         break;
                     case 'NT':
-                        if ($postcode < '0800' || $postcode > '0899') {
+                        if ($address_postcode < '0800' || $address_postcode > '0899') {
                             $eoi_errors[] = "Postcode must be between 0800 and 0899 for Northern Territory.";
                         }
                         break;
                     case 'WA':
-                        if ($postcode < '6000' || $postcode > '6999') {
+                        if ($address_postcode < '6000' || $address_postcode > '6999') {
                             $eoi_errors[] = "Postcode must be between 6000 and 6999 for Western Australia.";
                         }
                         break;
                     case 'SA':
-                        if ($postcode < '5000' || $postcode > '5799') {
+                        if ($address_postcode < '5000' || $address_postcode > '5799') {
                             $eoi_errors[] = "Postcode must be between 5000 and 5799 for South Australia.";
                         }
                         break;
                     case 'TAS':
-                        if ($postcode < '7000' || $postcode > '7999') {
+                        if ($address_postcode < '7000' || $address_postcode > '7999') {
                             $eoi_errors[] = "Postcode must be between 7000 and 7999 for Tasmania.";
                         }
                         break;
                     case 'ACT':
-                        if ($postcode < '0200' || $postcode > '0299') {
+                        if ($address_postcode < '0200' || $address_postcode > '0299') {
                             $eoi_errors[] = "Postcode must be between 0200 and 0299 for Australian Capital Territory.";
                         }
                         break;
