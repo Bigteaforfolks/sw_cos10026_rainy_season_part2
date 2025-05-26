@@ -17,7 +17,7 @@
         <h2>Login</h2>
     </section>
 
-    <form method="POST" action="process_login.php">
+    <form method="POST" action="admin.php">
         <label class="user">Username: </label>
         <input type="text" id="username" name="username" required>
 
