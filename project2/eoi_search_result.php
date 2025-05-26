@@ -13,22 +13,22 @@
         echo "<p>Displayed below are the Expressions of Interest for job positions offered by Rainy Season&period;</p>";
         echo "</section>";
 
-        echo "<table>";
+        echo "<table id='eoi_table' border = '1' cellpadding='2.5'>";
         echo "<tr>
                 <th>EOI Number</th>
                 <th>Job Reference Number</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Date of Birth</th>
+                <th>DOB</th>
                 <th>Gender</th>
                 <th>Street</th>
                 <th>Suburb</th> 
                 <th>State</th>
                 <th>Postcode</th>
-                <th>Email Address</th>
-                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Phone</th>
                 <th>Wireshark?</th>
-                <th>C Sharp?</th>
+                <th>C#?</th>
                 <th>Jira?</th>
                 <th>Github?</th>
                 <th>Scriptkiddie?</th>
@@ -113,6 +113,12 @@
                 $query = "SELECT * FROM eoi
                                 WHERE job_reference_number LIKE '%$filter_job%'
                                 AND last_name LIKE '%$filter_last_name%'";
+
+            } elseif (trim($filter_first_name) === "" && trim($filter_last_name) === "") { 
+                
+                // When Jobs filter is set
+                $query = "SELECT * FROM eoi
+                                WHERE job_reference_number LIKE '%$filter_job%'";
 
             }
         } elseif (trim($filter_job) === "") {
@@ -205,7 +211,7 @@
 
         } else {
             include "description_error.inc";
-            echo "<p>Selected EOI Number (ID: " . $filter_eoi_number . " does not exist.</p>";
+            echo "<p>Selected EOI Number (ID: " . $filter_eoi_number . ") does not exist.</p>";
             echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
         }
     }

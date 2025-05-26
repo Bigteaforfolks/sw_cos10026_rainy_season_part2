@@ -161,12 +161,33 @@
 
                 <!-- Job Reference Number (Select Box) -->
                 <div class="form-field">
-                    <label for="jobreferencenumber" class="form-field__label">Job Reference Number</label>
+                    <label for="jobreferencenumber" class="form-field__label">Position</label>
                     <select name="jobreferencenumber" id="jobreferencenumber" class="form-field__select" required>
                         <!-- "" is selected by default but cannot be used as a valid selection -->
-                        <option value="" disabled selected>Please Select a Reference Number</option>
-                        <option value="RX7FD">RX7FD &#8209; Cybersecurity Specialist</option>
-                        <option value="SIGC8">SIGC8 &#8209; Software Developer</option>
+                        <option value="" disabled selected>Please select a position</option>
+                        
+                            <?php
+
+                            session_start();
+                            require_once("settings.php");
+
+                            $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+                            if ($conn) {
+                                $query = "SELECT job_reference_number, position FROM jobs";
+                                $result = mysqli_query($conn, $query);
+                                if ($result && mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $ref = htmlspecialchars($row['job_reference_number']);
+                                        $pos = htmlspecialchars($row['position']);
+                                        echo "<option value='{$ref}'>{$ref} &#8209; {$pos}</option>";
+                                    }
+                                }
+                                mysqli_close($conn);
+                            } else {
+                                echo "<option disabled>There are no positions open at this time.</option>";
+                            }
+                            ?>
                     </select>
                 </div>
 
@@ -174,9 +195,9 @@
 
             <div class="form-group form-group--technicalskills">
 
-                <!-- Required Technical List (Checkboxes) -->
+                <!-- Technical List (Checkboxes) -->
                 <div>
-                    <p>Required Technical Skills</p>
+                    <p>Technical Skills</p>
                     <div class="form-field">
                         <input type="checkbox" name="wireshark" id="wireshark" class="form-field__checkbox" required>
                         <label for="wireshark" class="form-field__label"><strong>30&#43;</strong> years of experience with <em>Wireshark</em></label>

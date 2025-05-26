@@ -122,6 +122,11 @@ footer p {
     border-radius: 5%;  /* creates rounded effect on image */
 }
 
+#landing p, .description--hiring {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
 #pages {
     display: flex;  /* flexbox for page tiles */
     align-items: center;
@@ -424,7 +429,7 @@ aside #apply-link a:hover {
     margin-top: 25px;
 }
 
-#team-basic-info h3, #team-basic-info ul, .team-photo-section img, #member-contribution {
+#team-basic-info h3, #team-basic-info ul, .team-photo-section img, #member-contribution, #enhancements {
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -433,16 +438,16 @@ aside #apply-link a:hover {
     scale: 125%;
 }
 
-#team-basic-info h3, #member-contribution h3, .interests table caption {
+#team-basic-info h3, #member-contribution h3, .interests table caption, #enhancements h3 {
     font-size: 1.5em;
     font-weight: bold;
 }
 
-#team-basic-info ul, #member-contribution ul, #member-contribution dt {
+#team-basic-info ul, #member-contribution ul, #member-contribution dt, #enhancements ul, #enhancements dt {
     font-size: 1.25em;
 }
 
-#team-basic-info ul ul, #member-contribution ul ul {
+#team-basic-info ul ul, #member-contribution ul ul, #enhancements ul ul {
     font-size: 1em;
     margin-left: 0;
     margin-right: 0;
@@ -476,4 +481,10 @@ aside #apply-link a:hover {
 
 .interests table thead, .interests table tbody {
     font-size: 1.25em;
+}
+
+/* EOI styling */
+#eoi_table {
+    margin: 50px auto;  
+    width: 97.5%;
 }
