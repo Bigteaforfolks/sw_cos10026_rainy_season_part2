@@ -29,8 +29,8 @@
         </div>
 
         <div>
-            <label class="pass">Confirm Password: </label>
-            <input type="password" id="password" name="password" required>
+            <label class="confirm_pass">Confirm Password: </label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
         </div>
 
         <input type="submit" value="Register">
