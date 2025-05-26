@@ -117,6 +117,10 @@ if (!isset($_SESSION['username'])) {
         <input type="submit" name="submit" value="Change EOI Status">
 
     </form>
+
+    <form method="post" action="logout.php" style="display: inline;">
+    <button type="submit">Log Out</button>
+</form>
 </div>
 
 <?php
