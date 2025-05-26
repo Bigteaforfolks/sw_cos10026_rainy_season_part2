@@ -274,7 +274,7 @@ aside #apply-link a:hover {
 
 /* Apply page style elements */
 
-.form-field *:required {
+.form-field *:empty *:required {
     background-color: rgb(255, 240, 240);
 }
 
@@ -503,7 +503,7 @@ aside #apply-link a:hover {
     margin: 20px 15%; 
 }
 
-#login-page .form-input .form-button, #manage-page .form-input .form-button {
+#login-page .form-input .form-button, #manage-page .form-input .form-button, #register-page .form-input .form-button {
     border: solid 2px #FFFFFF;
     border-radius: 10px;
     padding: 10px 20px; 
@@ -518,12 +518,12 @@ aside #apply-link a:hover {
     margin: 5px; 
 }
 
-#login-page .form-input .form-button:hover, #manage-page .form-input .form-button:hover {
+#login-page .form-input .form-button:hover, #manage-page .form-input .form-button:hover, #register-page .form-input .form-button:hover {
     background-color: rgb(219, 246, 255);
     box-shadow: inset 0 5px 5px 0 white, 3px 3px 2px 0px rgb(58, 70, 75);
 }
 
-#login-page .form-input .form-button:active, #manage-page .form-input .form-button:active {
+#login-page .form-input .form-button:active, #manage-page .form-input .form-button:active, #register-page .form-input .form-button:active {
     box-shadow: 0;
 }
 
