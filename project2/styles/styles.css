@@ -302,7 +302,7 @@ aside #apply-link a:hover {
 
 #form-container {
     padding: 0px 2%;
-    margin: 0px 30%;
+    margin: 20px 30%;
 }
 
 .form-section {
@@ -332,16 +332,29 @@ aside #apply-link a:hover {
 .form-field {
     align-items: center;
     padding: 5px 0px;
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: flex-start;
 }
 
 .form-field__label {
-    display: inline-block;  /* display all labels to the side of inputs */
-    width: 20%
+    display: inline-block;
+    width: 20%;
+    margin-right: 1%; 
+    padding-top: 5px; 
 }
 
 .form-field__textbox {
     width: 200px;
 }
+
+.form-field__select {
+    border: solid 1px black;
+    padding: 1px;
+    width: 200px; 
+    box-sizing: border-box;
+}
+
 
 .form-group--name .form-field__textbox {
     width: 100px;
@@ -381,7 +394,7 @@ aside #apply-link a:hover {
 }
 
 .form-group--otherskills .form-field__label, .form-group--otherskills .form-field__textarea {
-    display: inline-block;  /* display label and input side by side */
+    display: inline-block;
     vertical-align: top;
 }
 
@@ -406,6 +419,8 @@ aside #apply-link a:hover {
     font-size: 2em;
     background-color: rgb(207, 242, 255);
     box-shadow: inset 0 5px 5px 0 white, 5px 5px 5px 0px rgb(100, 120, 128);
+    color: midnightblue;
+    cursor: pointer;
 }
 
 #submit-button:hover {
@@ -419,7 +434,7 @@ aside #apply-link a:hover {
 
 /* About page CSS styling */
 #student-ids {
-    margin-top: 0;      /* brings student ids vertically level with other information list */
+    margin-top: 0;
     float: right;
 }
 
@@ -482,6 +497,36 @@ aside #apply-link a:hover {
 .interests table thead, .interests table tbody {
     font-size: 1.25em;
 }
+
+/* Added styles for login and manage pages */
+#manage-page #form-container {
+    margin: 20px 15%; 
+}
+
+#login-page .form-input .form-button, #manage-page .form-input .form-button {
+    border: solid 2px #FFFFFF;
+    border-radius: 10px;
+    padding: 10px 20px; 
+    min-width: 150px;
+    height: auto; 
+    font-size: 1.5em; 
+    background-color: rgb(207, 242, 255);
+    box-shadow: inset 0 5px 5px 0 white, 5px 5px 5px 0px rgb(100, 120, 128);
+    color: midnightblue; 
+    cursor: pointer;
+    text-align: center;
+    margin: 5px; 
+}
+
+#login-page .form-input .form-button:hover, #manage-page .form-input .form-button:hover {
+    background-color: rgb(219, 246, 255);
+    box-shadow: inset 0 5px 5px 0 white, 3px 3px 2px 0px rgb(58, 70, 75);
+}
+
+#login-page .form-input .form-button:active, #manage-page .form-input .form-button:active {
+    box-shadow: 0;
+}
+
 
 /* EOI styling */
 #eoi_table {

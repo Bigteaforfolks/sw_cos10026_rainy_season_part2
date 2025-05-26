@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Management Login page of the Rainy Season website.">
+    <meta name="keywords" content="Rainy Season, Jobs, Apply, Login, Work, Form">
+    <meta name="author" content="Oakley Tang">
+    <title>HR Manager Login</title>
 
     <!-- Reference to external CSS file -->
     <link href="styles/styles.css" rel="stylesheet">
 </head>
-<body>
+<body id="login-page">
 
     <?php
         include 'header.inc';
@@ -17,19 +21,27 @@
         <h2>Login</h2>
     </section>
 
-    <form method="POST" action="process_login.php">
-        <div>
-            <label class="user">Username: </label>
-            <input type="text" id="username" name="username" autocomplete="off" required>
-        </div>
+    <div id="form-container">
+        <form method="POST" action="process_login.php">
+            <div class="form-section">
+                <div class="form-group">
+                    <div class="form-field">
+                        <label for="username" class="form-field__label">Username: </label>
+                        <input type="text" id="username" name="username" class="form-field__textbox" autocomplete="off" required>
+                    </div>
 
-        <div>
-            <label class="pass">Password: </label>
-            <input type="password" id="password" name="password" required>
-        </div>
+                    <div class="form-field">
+                        <label for="password" class="form-field__label">Password: </label>
+                        <input type="password" id="password" name="password" class="form-field__textbox" required>
+                    </div>
+                </div>
 
-        <input type="submit" value="Log in">
-    </form>
+                <div class="form-input">
+                    <input type="submit" class="form-button" value="Log in">
+                </div>
+            </div>
+        </form>
+    </div>
 
     <?php
         include 'footer.inc';
