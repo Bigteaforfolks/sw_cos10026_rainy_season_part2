@@ -31,8 +31,7 @@ if (!isset($_SESSION['username'])) {
 <!-- Information about the page -->
 <section class="description">
 
-    <h2>Rainy Season Manage Page</h2>
-    <p>You should only be here if you are the HR Manager of Rainy Season or have higher authority&period;</p>
+    <h2>Rainy Season Management Page</h2>
 
 </section>
 
