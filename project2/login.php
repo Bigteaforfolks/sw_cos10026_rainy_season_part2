@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-input">
-                    <input type="submit" value="Log in">
+                    <input type="submit" class="form-button" value="Log in">
                 </div>
             </div>
         </form>

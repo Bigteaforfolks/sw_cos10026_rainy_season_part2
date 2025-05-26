@@ -98,7 +98,7 @@ if (!isset($_SESSION['username'])) {
 
             <!-- Submit Entered Values -->
             <div class="form-input"> <!-- Added form-input div -->
-                <input type="submit" name="submit" value="List EOIs">
+                <input type="submit" name="submit" class="form-button" value="List EOIs">
             </div>
         </form>
     </div> <!-- Corrected closing div -->
@@ -147,7 +147,7 @@ if (!isset($_SESSION['username'])) {
 
             <!-- Submit Entered Values -->   
             <div class="form-input">
-                <input type="submit" name="submit" value="Delete EOIs">
+                <input type="submit" name="submit" class="form-button" value="Delete EOIs">
             </div>
         </form>
     </div>
@@ -167,13 +167,13 @@ if (!isset($_SESSION['username'])) {
                     <?php
                     $conn = mysqli_connect($host, $user, $pwd, $sql_db);
                     $max_eoi_id = 0;
-                    if ($conn_eoi_max) {
+                    if ($conn) {
                         $query_max = "SELECT MAX(eoi_number) AS max_id FROM eoi";
-                        $result_max = mysqli_query($conn_eoi_max, $query_max);
+                        $result_max = mysqli_query($conn, $query_max);
                         if ($result_max && $row_max = mysqli_fetch_assoc($result_max)) {
                             $max_eoi_id = $row_max['max_id'] ?? 0;
                         }
-                        mysqli_close($conn_eoi_max);
+                        mysqli_close($conn);
                     }
                     ?>
                     <input type="number" name="filter-eoi-number" id="filter-eoi-number" class="form-field__textbox" min="1" max="<?php echo $max_eoi_id; ?>">
@@ -192,7 +192,7 @@ if (!isset($_SESSION['username'])) {
 
             <!-- Submit Entered Values --> 
             <div class="form-input">
-                <input type="submit" name="submit" value="Change EOI Status">
+                <input type="submit" name="submit" class="form-button" value="Change EOI Status">
             </div>
         </form>
     </div>
@@ -201,10 +201,10 @@ if (!isset($_SESSION['username'])) {
         <div class="form-group">
              <div class="form-input">
                 <form method="get" action="register.php">
-                    <button type="submit">Register new admin</button>
+                    <button type="submit" class="form-button">Register new admin</button>
                 </form>
                 <form method="post" action="logout.php">
-                    <button type="submit">Log Out</button>
+                    <button type="submit" class="form-button">Log Out</button>
                 </form>
             </div>
         </div>
