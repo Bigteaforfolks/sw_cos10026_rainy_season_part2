@@ -18,7 +18,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     mysqli_close($conn);
     exit();
   } else {
-    echo "Incorrect username or password.";
+    echo "<link href='styles/styles.css' rel='stylesheet'>";
+    include "header.inc";
+    include "description_error.inc";
+    echo "<div class='msg'>";
+      echo "<p>Incorrect username or password.</p>";
+    echo "</div>";
+    include "footer.inc";
   }
 } else {
   // if no post method detected, redirect to login page
