@@ -209,36 +209,46 @@
                 // successful application, shows eoi number
                 if (mysqli_query($conn, $query)) {
                     $eoi_number = mysqli_insert_id($conn);
-                    echo "<h2>Application Submitted Successfully!</h2>";
-                    echo "<p>Your EOI number is: <strong>" . $eoi_number . "</strong></p>";
+                    echo "<div class='msg'>";
+                        echo "<h2>Application Submitted Successfully!</h2>";
+                        echo "<p>Your EOI number is: <strong>" . $eoi_number . "</strong></p>";
+                    echo "</div>";
                 } else {
                     include "description_error.inc";
-                    echo "<p>Error: " . mysqli_error($conn) . "</p>";
+                    echo "<div class='msg'>";
+                        echo "<p>Error: " . mysqli_error($conn) . "</p>";
+                    echo "</div>";
                 }
 
             } else {
 
                 include "description_error.inc";
-                echo "<h3>Application Submission Failed</h3>";
-                echo "<p>Please correct the following errors:</p>";
-                echo "<ul>";
-                foreach ($eoi_errors as $field => $error_message) {
-                    echo "<li>" . htmlspecialchars($error_message) . "</li>";
-                }
-                echo "</ul>";
-                echo "<p><a href='apply.php'>Go back to Application Form</a></p>";
+                echo "<div class='msg'>";
+                    echo "<h3>Application Submission Failed</h3>";
+                    echo "<p>Please correct the following errors:</p>";
+                    echo "<ul>";
+                    foreach ($eoi_errors as $field => $error_message) {
+                        echo "<li>" . htmlspecialchars($error_message) . "</li>";
+                    }
+                    echo "</ul>";
+                    echo "<p><a href='apply.php'>Go back to Application Form</a></p>";
+                echo "</div>";
             }
         } else {
             // display connection error
             include "description_error.inc";
-            echo "<h3>Database Connection Error</h3>";
-            echo "<p>Unable to connect to database. Error: " . mysqli_connect_error() . "</p>";
+            echo "<div class='msg'>";
+                echo "<h3>Database Connection Error</h3>";
+                echo "<p>Unable to connect to database. Error: " . mysqli_connect_error() . "</p>";
+            echo "</div>";
         }
     } else {
         // if no post method detected, deny user access
         include "description_error.inc";
-        echo "<h3>Access Denied</h3>";
-        echo "<p>You should not be here, go back to the <a href='apply.php'>Application Form</a>, man.</p>";
+        echo "<div class='msg'>";
+            echo "<h3>Access Denied</h3>";
+            echo "<p>You should not be here, go back to the <a href='apply.php'>Application Form</a>, man.</p>";
+        echo "</div>";
     }
     
     // include footer

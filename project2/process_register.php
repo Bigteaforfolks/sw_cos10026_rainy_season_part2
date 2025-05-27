@@ -25,7 +25,7 @@ if ($password !== $confirm_password) {
     echo "<div class='msg'>";
         echo "<p>Error: Passwords do not match.</p>";
         echo "<br><p><a href='register.php'>Back to register</a></p>";
-    echo "<div>";
+    echo "</div>";
     include "footer.inc";
     exit;
 }
@@ -42,7 +42,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<div class='msg'>";
         echo "<p>Username already exists.</p>";
         echo "<br><p><a href='register.php'>Back to register</a></p>";
-    echo "<div>";
+    echo "</div>";
     include "footer.inc";
     mysqli_close($conn);
     exit;
@@ -59,14 +59,14 @@ if ($stmt->execute()) {
     echo "<div class='msg'>";
         echo "<p>Registration successful.</p>";
         echo "<br><p><a href='login.php'>Go to login</a></p>";
-    echo "<div>";
+    echo "</div>";
     include "footer.inc";
 } else {
     include "header.inc";
     echo "<div class='msg'>";
         echo "<p>Registration failed.</p>";
         echo "<br><p><a href='register.php'>Back to register</a></p>";
-    echo "<div>";
+    echo "</div>";
     include "footer.inc";
 }
 
