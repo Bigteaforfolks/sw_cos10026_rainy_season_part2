@@ -154,8 +154,10 @@
 
         } else {
             include "description_error.inc";
-            echo "<p>EOI does not exist.</p>";
-            echo "<p>Please confirm existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+            echo "<div class='msg'>";
+                echo "<p>EOI does not exist.</p>";
+                echo "<p>Please confirm existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+            echo "</div>";
         }
 
     // Displays all EOIs after deleting records of a chosen job reference number
@@ -176,8 +178,10 @@
             list_result($result);
         } else {
             include "description_error.inc";
-            echo "<p>Error deleting EOI: " . mysqli_error($conn) . "</p>";
-            echo "<p>Please confirm there are eligible EOIs to be deleted by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+            echo "<div class='msg'>";
+                echo "<p>Error deleting EOI: " . mysqli_error($conn) . "</p>";
+                echo "<p>Please confirm there are eligible EOIs to be deleted by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+            echo "</div>";
         }
 
     // Displays all EOIs after changing the status of a chosen record
@@ -205,21 +209,24 @@
                 list_result($result);
             } else {
                 include "description_error.inc";
-                echo "<p>Error modifying EOI: " . mysqli_error($conn) . "</p>";
-                echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+                echo "<div class='msg'>";
+                    echo "<p>Error modifying EOI: " . mysqli_error($conn) . "</p>";
+                    echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+                echo "</div>";
             }
 
         } else {
             include "description_error.inc";
-            echo "<p>Selected EOI Number (ID: " . $filter_eoi_number . ") does not exist.</p>";
-            echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+            echo "<div class='msg'>";
+                echo "<p>Selected EOI Number (ID: " . $filter_eoi_number . ") does not exist.</p>";
+                echo "<p>Please confirm the existing EOIs by listing all in the <a href='manage.php'>Manage Page.</a></p>";
+            echo "</div>";
         }
     }
 
     // Page Footer and SQL close
     include "footer.inc";
     mysqli_close($conn);
-    
 ?>
 
 </body>
