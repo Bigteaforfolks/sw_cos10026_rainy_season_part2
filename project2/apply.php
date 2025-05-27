@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,8 +171,6 @@
                         <option value="" disabled selected>Please select a position</option>
                         
                             <?php
-
-                            session_start();
                             require_once("settings.php");
 
                             $conn = mysqli_connect($host, $user, $pwd, $sql_db);
@@ -231,7 +233,7 @@
                 <!-- Other Skills (Textbox) -->
                 <div class="form-field">
                     <input type="checkbox" name="other_skills_checkbox" id="other_skills_checkbox" class="form-field__checkbox">
-                    <label for="otherskills" class="form-field__label" id="form-field">Other Skills</label>
+                    <label for="other_skills" class="form-field__label" id="form-field">Other Skills</label>
                     <textarea name="other_skills" id="other_skills" class="form-field__textarea" rows="3"></textarea>
                 </div>
 
